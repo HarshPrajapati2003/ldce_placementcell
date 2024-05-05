@@ -126,6 +126,7 @@ class formController {
       // Query for pending students by enrollment number
       const pendingStudents = await studentData.find({
         enrollmentNumber: enrollmentNumber,
+        isVerified : "pending"
       });
 
       return res.status(200).json({ pendingStudents });

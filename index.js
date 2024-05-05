@@ -2,6 +2,7 @@ import express from "express"
 import connectDB from "./config/db.js"
 import authRoutes from "./routes/authRoutes.js"
 import formRoutes from "./routes/formRoutes.js";
+import companyRoutes from "./routes/companyRoutes.js";
 import cors from "cors"
 import dotenv from "dotenv"
 import cookieParser from "cookie-parser"
@@ -20,6 +21,7 @@ app.get('/',(req,res)=>{
 // routes
 app.use("/api/auth", authRoutes)
 app.use("/student", formRoutes);
+app.use("/company", companyRoutes);
 
 app.listen(PORT,()=>{
     console.log(`Server is running on http://localhost:${PORT}/`)
