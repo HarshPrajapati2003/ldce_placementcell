@@ -10,5 +10,6 @@ router.post("/fetch-pending-regex", formController.fetchPendingStudentsByRegex);
 router.post("/fetch-pending-enrollment", formController.fetchPendingStudentsByEnrollment);
 router.patch("/check-profile", formController.updatePendingStudentsByID);
 router.get("/check-profile/:id", formController.fetchPendingStudentsByID);
+router.patch("/apply-job", formController.ApplyForJob);
 
 export default router;

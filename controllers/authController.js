@@ -26,7 +26,7 @@ class authController {
           const heading = "LDCE Placement cell Email verification";
           const description = "Click below button and Verify your email";
           const button = "VERIFY EMAIL";
-          sendEmailtoUser(link, email, subject, heading, description, button);
+          sendEmailtoUser(link, email, subject, heading, description, button,res);
 
           const user = authModel({
             username,
@@ -146,7 +146,7 @@ class authController {
           const heading = "You have requested to reset your password";
           const description = "Click below button and change your password";
           const button = "RESET PASSWORD";
-          sendEmailtoUser(link, email, subject, heading, description, button);
+          sendEmailtoUser(link, email, subject, heading, description, button,res);
           return res.status(200).json({
             message: "We sent you reset password link in your email",
             linkToken: token,

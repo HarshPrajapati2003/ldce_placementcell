@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+const { Schema } = mongoose;
 
 const courseEnumValues = ["Under Graduate", "Post Graduate","Both"];
 const departmentEnumValues = [
@@ -40,8 +41,14 @@ const companySchema = new mongoose.Schema(
     minSPI: { type: Number, default: 0 },
     departments: { type: [String], required: true, enum: departmentEnumValues },
 
+    // Eligible Students
+    eligibleStudents: { type: [Schema.Types.ObjectId] },
+
+    //  Apply Students
+    applyStudents: { type: [Schema.Types.ObjectId] },
+
     // Selected Students
-    selectedStudents: { type: Number, required: true, default: 0 },
+    selectedStudents: { type: [Schema.Types.ObjectId] },
   },
   { timestamps: true }
 );

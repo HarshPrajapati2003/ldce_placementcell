@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const castEnumValues = ["General", "SEBC", "SC", "ST", "EWS"];
 const courseEnumValues = ["Under Graduate", "Post Graduate"];
@@ -62,6 +62,10 @@ const studentDataSchema = new mongoose.Schema(
     currApply: { type: String },
     currLPA: { type: Number },
     isVerified: { type: String, required: true, default: "pending" },
+    resume:{ type: String},
+
+    // Eligible Companies
+    eligibleCompanies: { type: [Schema.Types.ObjectId] },
   },
   { timestamps: true }
 );
