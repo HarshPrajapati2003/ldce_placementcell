@@ -42,13 +42,13 @@ const companySchema = new mongoose.Schema(
     departments: { type: [String], required: true, enum: departmentEnumValues },
 
     // Eligible Students
-    eligibleStudents: { type: [Schema.Types.ObjectId] },
+    eligibleStudents: { type: [Schema.Types.ObjectId], ref: "studentData" },
 
     //  Apply Students
-    applyStudents: { type: [Schema.Types.ObjectId] },
+    applyStudents: { type: [Schema.Types.ObjectId], ref: "studentData" },
 
     // Selected Students
-    selectedStudents: { type: [Schema.Types.ObjectId] },
+    selectedStudents: { type: [Schema.Types.ObjectId], ref: "studentData" },
   },
   { timestamps: true }
 );

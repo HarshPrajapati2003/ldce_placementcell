@@ -59,13 +59,13 @@ const studentDataSchema = new mongoose.Schema(
     cpi: { type: Number, min: 0, max: 10, required: true },
     cgpa: { type: Number, min: 0, max: 10, required: true },
     placed: { type: String },
-    currApply: { type: String },
+    currApply: { type: Schema.Types.ObjectId, ref: "companyData" },
     currLPA: { type: Number },
     isVerified: { type: String, required: true, default: "pending" },
-    resume:{ type: String},
+    resume: { type: String },
 
     // Eligible Companies
-    eligibleCompanies: { type: [Schema.Types.ObjectId] },
+    eligibleCompanies: { type: [Schema.Types.ObjectId], ref: "companyData" },
   },
   { timestamps: true }
 );

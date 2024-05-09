@@ -260,6 +260,102 @@ class formController {
         .json({ message: `Internal server error ${error.message}` });
     }
   };
+
+  // Update student's data (student selection process)
+  static studentSelection = async (req, res) => {
+    try {
+      const { studentId, companyId, companyName, currLPA, status } = req.body;
+
+      // Validate inputs
+      if (!studentId || !companyId || !companyName || !currLPA || !status) {
+        return res.status(400).json({ message: "Missing required fields." });
+      }
+
+      const tempStudent = await studentData.findById(studentId);
+      if (!tempStudent) {
+        return res.status(404).json({ message: "Student not found." });
+      }
+
+      if (status === "Select") {
+        const student = await studentData.findByIdAndUpdate(
+          studentId,
+          {
+            currLPA,
+            placed: companyName,
+            currApply: companyId,
+          },
+          { new: true }
+        );
+
+        if (!student) {
+          return res.status(404).json({ message: "Student not found." });
+        }
+
+        const company = await companyData.findByIdAndUpdate(
+          companyId,
+          {
+            $push: { selectedStudents: studentId },
+          },
+          { new: true }
+        );
+
+        if (!company) {
+          return res.status(404).json({ message: "Company not found." });
+        }
+
+        // Send placement email
+        const email = student.email;
+        const link = `http://localhost:5173/check-company/${companyId}`;
+        const subject = `Finally Placed! (LDCE Placement Cell)`;
+        const heading = `Congratulations! ${student.firstName} ${student.lastName}, You are placed at : ${student.placed}`;
+        const description = "Click below button to see your updated profile";
+        const button = "SEE PROFILE";
+        sendEmailtoUser(
+          link,
+          email,
+          subject,
+          heading,
+          description,
+          button,
+          res
+        );
+        return res
+          .status(200)
+          .json({ message: "Student Placed Successfully!", student });
+        
+      } else if (status === "Reject") {
+        // Send rejection email
+        const email = tempStudent.email;
+        const link = `http://localhost:5173/check-company/${companyId}`;
+        const subject = `Sorry, You're Rejected (LDCE Placement Cell)`;
+        const heading = `Sorry, ${tempStudent.firstName} ${tempStudent.lastName}, You are rejected for the job at : ${companyName}`;
+        const description = "Click below button to see your updated profile";
+        const button = "SEE PROFILE";
+        sendEmailtoUser(
+          link,
+          email,
+          subject,
+          heading,
+          description,
+          button,
+          res
+        );
+
+        return res
+          .status(200)
+          .json({
+            message: "Student Rejected Successfully!",
+            student: tempStudent,
+          });
+      } else {
+        return res.status(400).json({ message: "Invalid status." });
+      }
+    } catch (error) {
+      return res
+        .status(500)
+        .json({ message: `Internal server error ${error.message}` });
+    }
+  };
 };
 
 export default formController;

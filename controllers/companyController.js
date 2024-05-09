@@ -120,7 +120,11 @@ class companyController {
   static getCompany = async (req, res) => {
     const { id } = req.params;
     try {
-      const company = await companyData.findById(id);
+      const company = await companyData
+        .findById(id)
+        .populate("eligibleStudents")
+        .populate("applyStudents")
+        .populate("selectedStudents");
       if (company) {
         return res
           .status(200)
