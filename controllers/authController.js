@@ -74,12 +74,24 @@ class authController {
               const token = await jwt.sign(
                 { userID: exist._id },
                 process.env.JWT_SECRET,
-                { expiresIn: "2d" }
+                { expiresIn: "1d" }
               );
-              res.cookie("jwt", token, {
-                httpOnly: true,
-                maxAge: new Date(Date.now() + 60 * 60 * 1000), // 1 hour
-              });
+
+              req.session.user = {
+                _id: exist._id,
+                username: exist.username,
+                password: password,
+                email: exist.email,
+                isVerified: exist.isVerified,
+                role: exist.role,
+                token: token
+              };
+
+              // res.cookie("jwt", token, {
+              //   httpOnly: true,
+              //   maxAge: new Date(Date.now() + 60 * 60 * 1000), // 1 hour
+              // });
+              console.log("Session after login:", req.session);
               res.status(200).json({
                 message: "login successfull",
                 token: token,
@@ -99,28 +111,6 @@ class authController {
       }
     } catch (err) {
       res.status(400).json({ message: "no login", error: err });
-    }
-  };
-
-  // change password
-  static changePassword = async (req, res) => {
-    const { newpassword, confirmpassword } = req.body;
-    try {
-      if (newpassword && confirmpassword) {
-        if (newpassword === confirmpassword) {
-          const hashpassword = await bcryptjs.hash(newpassword, 12);
-          await authModel.findByIdAndUpdate(req.user._id, {
-            password: hashpassword,
-          }); //req.user is blongs to authMiddleware file
-          res.status(200).json({ message: "password changed successfully" });
-        } else {
-          res.status(400).json({ message: "password doesn't match" });
-        }
-      } else {
-        res.status(400).json({ message: "please fill all the fields" });
-      }
-    } catch (err) {
-      res.status(400).json({ message: err.message });
     }
   };
 
