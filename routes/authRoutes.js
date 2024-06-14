@@ -12,8 +12,10 @@ router.post("/forget-password",authController.forgetPassword)
 router.post("/forget-password/:id/:token",authController.forgetPasswordEmail)
 
 // Email verification
+router.get("/verify/:token", authController.SaveVerifyEmail)
 
-router.get("/verify/:token",authController.SaveVerifyEmail)
+// Delete Notification
+router.delete("/notifications/:userId/:id", authController.deleteNotification);
 
 // Protected route
 router.get('/home', isAuthenticated, (req, res) => {

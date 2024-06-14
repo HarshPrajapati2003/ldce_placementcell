@@ -20,10 +20,15 @@ const authSchema = new mongoose.Schema(
       default: "false",
     },
     role: { type: String, required: true, default: "student" },
-        department: { type: String },
-        studentData: {
-        },
-    SData:{type:Schema.Types.ObjectId,ref:"studentData"}
+    department: { type: String },
+    // studentData: {},
+    // SData:{type:Schema.Types.ObjectId,ref:"studentData"}
+    notification: [
+      {
+        title: String,
+        date: { type: Date, default: Date.now },
+      },
+    ],
   },
   { timestamps: true }
 );

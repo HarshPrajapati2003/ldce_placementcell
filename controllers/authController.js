@@ -26,7 +26,15 @@ class authController {
           const heading = "LDCE Placement cell Email verification";
           const description = "Click below button and Verify your email";
           const button = "VERIFY EMAIL";
-          sendEmailtoUser(link, email, subject, heading, description, button,res);
+          sendEmailtoUser(
+            link,
+            email,
+            subject,
+            heading,
+            description,
+            button,
+            res
+          );
 
           const user = authModel({
             username,
@@ -84,7 +92,7 @@ class authController {
                 email: exist.email,
                 isVerified: exist.isVerified,
                 role: exist.role,
-                token: token
+                token: token,
               };
 
               // res.cookie("jwt", token, {
@@ -101,7 +109,9 @@ class authController {
               res.status(400).json({ message: "invalid credential" });
             }
           } else {
-            res.status(400).json({ message: "Email Verification is pending, check your email inbox"});
+            res.status(400).json({
+              message: "Email Verification is pending, check your email inbox",
+            });
           }
         } else {
           res.status(400).json({ message: "please register first" });
@@ -123,11 +133,15 @@ class authController {
         const isUser = await authModel.findOne({ email });
         if (isUser) {
           // generate token
-          const token = jwt.sign({ userID: isUser._id },  process.env.JWT_SECRET, {
-            expiresIn: "60m",
-          });
-            
-            const newToken = token.replace(/\./g, "DOT");
+          const token = jwt.sign(
+            { userID: isUser._id },
+            process.env.JWT_SECRET,
+            {
+              expiresIn: "60m",
+            }
+          );
+
+          const newToken = token.replace(/\./g, "DOT");
 
           const link = `http://localhost:5173/reset/${isUser._id}/${newToken}`;
 
@@ -136,7 +150,15 @@ class authController {
           const heading = "You have requested to reset your password";
           const description = "Click below button and change your password";
           const button = "RESET PASSWORD";
-          sendEmailtoUser(link, email, subject, heading, description, button,res);
+          sendEmailtoUser(
+            link,
+            email,
+            subject,
+            heading,
+            description,
+            button,
+            res
+          );
           return res.status(200).json({
             message: "We sent you reset password link in your email",
             linkToken: token,
@@ -155,41 +177,44 @@ class authController {
   // forgetPasswordEmail
   static forgetPasswordEmail = async (req, res) => {
     const { newPassword, confirmPassword } = req.body;
-      const { id, token } = req.params;
-      
-      console.log(newPassword, confirmPassword, id,token);
+    const { id, token } = req.params;
+
+    console.log(newPassword, confirmPassword, id, token);
 
     try {
       if (newPassword && confirmPassword && id && token) {
-          if (newPassword === confirmPassword) {
-            // Replace "DOT" with '.'
-            const decodedToken = token.replace(/DOT/g, ".");
-            // token verify
-            const isValid = await jwt.verify(decodedToken, process.env.JWT_SECRET);
-            if (isValid) {
-              // password hashing
-              const hashPassword = await bcryptjs.hash(newPassword, 12);
-              const isUser = await authModel.findById(id);
+        if (newPassword === confirmPassword) {
+          // Replace "DOT" with '.'
+          const decodedToken = token.replace(/DOT/g, ".");
+          // token verify
+          const isValid = await jwt.verify(
+            decodedToken,
+            process.env.JWT_SECRET
+          );
+          if (isValid) {
+            // password hashing
+            const hashPassword = await bcryptjs.hash(newPassword, 12);
+            const isUser = await authModel.findById(id);
 
-              const isSuccess = await authModel.findOneAndUpdate(isUser._id, {
-                password: hashPassword,
-              });
-              if (isSuccess) {
-                return res
-                  .status(200)
-                  .json({ message: "password changed successfully" });
-              }
-            } else {
-              return res.status(400).json({ message: "sorry!,link expired" });
+            const isSuccess = await authModel.findOneAndUpdate(isUser._id, {
+              password: hashPassword,
+            });
+            if (isSuccess) {
+              return res
+                .status(200)
+                .json({ message: "password changed successfully" });
             }
           } else {
+            return res.status(400).json({ message: "sorry!,link expired" });
+          }
+        } else {
           return res.status(400).json({ message: "password doesn't match" });
         }
       } else {
         return res.status(400).json({ message: "all fields are required" });
       }
     } catch (err) {
-        console.log(err)
+      console.log(err);
       return res.status(400).json({ message: err.message });
     }
   };
@@ -226,6 +251,40 @@ class authController {
       }
     } catch (err) {
       return res.status(400).json({ message: err.message });
+    }
+  };
+
+  // deleteNotification
+  static deleteNotification = async (req, res) => {
+    const { id, userId } = req.params;
+
+    try {
+      if (id && userId) {
+        // Find the user by userId
+        const user = await authModel.findById(userId);
+
+        if (!user) {
+          return res.status(404).json({ message: "User not found" });
+        }
+
+        // Filter out the notification by id
+        user.notification = user.notification.filter(
+          (n) => n._id.toString() !== id
+        );
+
+        // Save the updated user
+        await user.save();
+
+        return res
+          .status(200)
+          .json({ message: "Notification deleted successfully" });
+      } else {
+        return res
+          .status(400)
+          .json({ message: "Invalid userId or notification id" });
+      }
+    } catch (err) {
+      return res.status(500).json({ message: err.message });
     }
   };
 }

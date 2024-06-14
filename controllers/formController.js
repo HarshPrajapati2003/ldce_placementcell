@@ -3,6 +3,7 @@ import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { sendEmailtoUser } from "../config/EmailTemplate.js";
 import companyData from "../models/companyModel.js";
+import authModel from "../models/authModel.js";
 
 class formController {
   // Student Registeration Form
@@ -155,6 +156,20 @@ class formController {
         const heading = `Your LDCE Placement cell registration verification status is : ${student.isVerified}`;
         const description = "Click below button to see your updated profile";
         const button = "SEE PROFILE";
+        const notification = await authModel.findByIdAndUpdate(
+          id,
+          {
+            $push: {
+              notification: {
+                title: `Your LDCE Placement cell registration verification status is: ${student.isVerified}`,
+                date: Date.now(),
+              },
+            },
+          },
+          { new: true } // This option returns the updated document
+        );
+        console.log("Notification updated:", notification);
+
         sendEmailtoUser(
           link,
           email,
@@ -192,6 +207,20 @@ class formController {
           student.isVerified === "verified" ||
           student.isVerified === "reject"
         ) {
+           const notification = await authModel.findByIdAndUpdate(
+             id,
+             {
+               $push: {
+                 notification: {
+                   title: `Your LDCE Placement cell registration verification status is: ${student.isVerified}`,
+                   date: Date.now(),
+                 },
+               },
+             },
+             { new: true } // This option returns the updated document
+           );
+           console.log("Notification updated:", notification);
+
           sendEmailtoUser(
             link,
             email,
@@ -310,6 +339,19 @@ class formController {
         const heading = `Congratulations! ${student.firstName} ${student.lastName}, You are placed at : ${student.placed}`;
         const description = "Click below button to see your updated profile";
         const button = "SEE PROFILE";
+        const notification = await authModel.findByIdAndUpdate(
+          student._id,
+          {
+            $push: {
+              notification: {
+                title: `Congratulations! ${student.firstName} ${student.lastName}, You are placed at : ${student.placed}`,
+                date: Date.now(),
+              },
+            },
+          },
+          { new: true } // This option returns the updated document
+        );
+        console.log("Notification updated:", notification);
         sendEmailtoUser(
           link,
           email,
@@ -331,6 +373,19 @@ class formController {
         const heading = `Sorry, ${tempStudent.firstName} ${tempStudent.lastName}, You are rejected for the job at : ${companyName}`;
         const description = "Click below button to see your updated profile";
         const button = "SEE PROFILE";
+        const notification = await authModel.findByIdAndUpdate(
+          tempStudent._id,
+          {
+            $push: {
+              notification: {
+                title: `Sorry, ${tempStudent.firstName} ${tempStudent.lastName}, You are rejected for the job at : ${companyName}`,
+                date: Date.now(),
+              },
+            },
+          },
+          { new: true } // This option returns the updated document
+        );
+        console.log("Notification updated:", notification);
         sendEmailtoUser(
           link,
           email,
