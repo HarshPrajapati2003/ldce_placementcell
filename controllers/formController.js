@@ -151,7 +151,7 @@ class formController {
       );
       if (student) {
         const email = student.email;
-        const link = `http://localhost:5173/student-profile`;
+        const link = `https://ldce-placementcell.onrender.com/student-profile`;
         const subject = `Your varification status : ${student.isVerified}`;
         const heading = `Your LDCE Placement cell registration verification status is : ${student.isVerified}`;
         const description = "Click below button to see your updated profile";
@@ -198,7 +198,7 @@ class formController {
       const student = await studentData.findById(id);
       if (student) {
         const email = student.email;
-        const link = `http://localhost:5173/student-profile`;
+        const link = `https://ldce-placementcell.onrender.com/student-profile`;
         const subject = `Your varification status : ${student.isVerified}`;
         const heading = `Your LDCE Placement cell registration verification status is : ${student.isVerified}`;
         const description = "Click below button to see your updated profile";
@@ -334,7 +334,7 @@ class formController {
 
         // Send placement email
         const email = student.email;
-        const link = `http://localhost:5173/check-company/${companyId}`;
+        const link = `https://ldce-placementcell.onrender.com/check-company/${companyId}`;
         const subject = `Finally Placed! (LDCE Placement Cell)`;
         const heading = `Congratulations! ${student.firstName} ${student.lastName}, You are placed at : ${student.placed}`;
         const description = "Click below button to see your updated profile";
@@ -368,7 +368,7 @@ class formController {
       } else if (status === "Reject") {
         // Send rejection email
         const email = tempStudent.email;
-        const link = `http://localhost:5173/check-company/${companyId}`;
+        const link = `https://ldce-placementcell.onrender.com/check-company/${companyId}`;
         const subject = `Sorry, You're Rejected (LDCE Placement Cell)`;
         const heading = `Sorry, ${tempStudent.firstName} ${tempStudent.lastName}, You are rejected for the job at : ${companyName}`;
         const description = "Click below button to see your updated profile";

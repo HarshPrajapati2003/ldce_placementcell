@@ -69,7 +69,7 @@ class companyController {
       company.eligibleStudents = eligibleStudents;
       await company.save();
 
-      const link = `http://localhost:5173/check-company/${company._id}`;
+      const link = `https://ldce-placementcell.onrender.com/check-company/${company._id}`;
       const subject = "Job Alert (LDCE Placement Cell)";
       const heading = `Congratulations!, You are eligible for ${company.companyName} company`;
       const desc = `Click the button below to apply for a job at ${company.companyName} or learn more about the company. Last date to apply : ${lastDate}`;

@@ -21,7 +21,7 @@ class authController {
             expiresIn: "60m",
           });
           const newToken = token.replace(/\./g, "DOT");
-          const link = `http://localhost:5173/verifyemail/${newToken}`;
+          const link = `https://ldce-placementcell.onrender.com/verifyemail/${newToken}`;
           const subject = "Email verification Request";
           const heading = "LDCE Placement cell Email verification";
           const description = "Click below button and Verify your email";
@@ -143,7 +143,7 @@ class authController {
 
           const newToken = token.replace(/\./g, "DOT");
 
-          const link = `http://localhost:5173/reset/${isUser._id}/${newToken}`;
+          const link = `https://ldce-placementcell.onrender.com//reset/${isUser._id}/${newToken}`;
 
           // sending email
           const subject = "Reset Password Request";
