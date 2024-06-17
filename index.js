@@ -7,7 +7,8 @@ import cors from "cors"
 import dotenv from "dotenv"
 import cookieParser from "cookie-parser"
 import session from "express-session"
-import MongoStore  from "connect-mongo"
+import MongoStore from "connect-mongo"
+import path from 'path'
 const app=express()
 const PORT = process.env.PORT || 5000
 dotenv.config();
@@ -37,13 +38,36 @@ app.use(
   })
 );
 
-app.get('/',(req,res)=>{
-    res.send("Backend is running...")
-})
 // routes
 app.use("/api/auth", authRoutes)
 app.use("/student", formRoutes);
 app.use("/company", companyRoutes);
+
+// ----------------  Deployment --------------------
+
+const __dirname1 = path.resolve();
+if ((process.env.NODE_ENV === "Production")) {
+  app.use(express.static(path.join(__dirname1, "/Frontend/dist")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname1,"Frontend","dist", "index.html"));
+  });
+} else {
+  app.get("/", (req, res) => {
+    res.send("Backend is running...");
+  });
+}
+  
+
+// ----------------  Deployment --------------------
+
+// ----------------  Localhost --------------------
+
+// app.get("/", (req, res) => {
+//   res.send("Backend is running...");
+// });
+
+// ----------------  Localhost --------------------
 
 app.listen(PORT,()=>{
     console.log(`Server is running on http://localhost:${PORT}/`)
