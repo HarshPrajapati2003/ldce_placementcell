@@ -1,9 +1,11 @@
 import studentData from "../models/studentDataModel.js";
-import bcryptjs from "bcryptjs";
-import jwt from "jsonwebtoken";
+import { jsPDF } from "jspdf";
+import fs from "fs";
+import path from "path";
 import { sendEmailtoUser } from "../config/EmailTemplate.js";
 import companyData from "../models/companyModel.js";
 import authModel from "../models/authModel.js";
+import { loadImage, createCanvas } from "canvas";
 
 class formController {
   // Student Registeration Form
@@ -161,7 +163,7 @@ class formController {
           {
             $push: {
               notification: {
-                title: `Your LDCE Placement cell registration verification status is: ${student.isVerified}`,
+                title: `Your LDCE Placement cell Application verification status is: ${student.isVerified}`,
                 date: Date.now(),
               },
             },
@@ -207,19 +209,19 @@ class formController {
           student.isVerified === "verified" ||
           student.isVerified === "reject"
         ) {
-           const notification = await authModel.findByIdAndUpdate(
-             id,
-             {
-               $push: {
-                 notification: {
-                   title: `Your LDCE Placement cell registration verification status is: ${student.isVerified}`,
-                   date: Date.now(),
-                 },
-               },
-             },
-             { new: true } // This option returns the updated document
-           );
-           console.log("Notification updated:", notification);
+          const notification = await authModel.findByIdAndUpdate(
+            id,
+            {
+              $push: {
+                notification: {
+                  title: `Your LDCE Placement cell Application verification status is: ${student.isVerified}`,
+                  date: Date.now(),
+                },
+              },
+            },
+            { new: true } // This option returns the updated document
+          );
+          console.log("Notification updated:", notification);
 
           sendEmailtoUser(
             link,
@@ -364,7 +366,6 @@ class formController {
         return res
           .status(200)
           .json({ message: "Student Placed Successfully!", student });
-        
       } else if (status === "Reject") {
         // Send rejection email
         const email = tempStudent.email;
@@ -396,12 +397,10 @@ class formController {
           res
         );
 
-        return res
-          .status(200)
-          .json({
-            message: "Student Rejected Successfully!",
-            student: tempStudent,
-          });
+        return res.status(200).json({
+          message: "Student Rejected Successfully!",
+          student: tempStudent,
+        });
       } else {
         return res.status(400).json({ message: "Invalid status." });
       }
@@ -409,6 +408,163 @@ class formController {
       return res
         .status(500)
         .json({ message: `Internal server error ${error.message}` });
+    }
+  };
+
+  // Generate Student Profile PDF
+  static generatePDF = async (req, res) => {
+    try {
+      const formData = req.body;
+
+      const General_Information = {
+        "First Name": formData.firstName,
+        "Middle Name": formData.middleName,
+        "Last Name": formData.lastName,
+        "Aadhar Number": formData.adharNo,
+        "PAN Number": formData.PANNumber,
+        "Mobile Number": formData.mobileNo,
+        "Email Address": formData.email,
+        "Date Of Birth": new Date(formData.dob).toLocaleDateString("en-IN"),
+        "Cast Name": formData.cast,
+      };
+
+      const Parents_Information = {
+        "Father Name": formData.fatherName,
+        "Mother Name": formData.motherName,
+        "Parents Mobile Number": formData.parentsMobileNo,
+      };
+
+      const Residential_Information = {
+        Address: formData.address,
+        "State Name": formData.state,
+        "City Name": formData.city,
+        "Pincode Number": formData.pincode,
+      };
+
+      const Academic_Information = {
+        "Course Name": formData.course,
+        "Department Name": formData.department,
+        "Passing Year": formData.passingYear,
+        "Enrollment Number": formData.enrollmentNumber,
+        "HSC Grade": formData.hscPercentage,
+        "All Sem SPI": formData.spi.join(", "),
+        CPI: formData.cpi,
+        CGPA: formData.cgpa,
+        "Verification Status": formData.isVerified,
+      };
+
+      const doc = new jsPDF();
+
+      // Add company logo
+      const logoUrl =
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlvIsNI8hPIhXz7Xvy46Tw8m75jzJkZPwaLABiZu1vww&s"; // Replace with your company logo URL
+      const logoImage = await loadImage(logoUrl);
+      const canvas = createCanvas(40, 20);
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(logoImage, 0, 0, 40, 20);
+      const logoDataUrl = canvas.toDataURL("image/png");
+      doc.addImage(logoDataUrl, "PNG", 10, 10, 40, 20);
+
+      // Add LDCE Placement Cell Registration Form heading
+      doc.setFontSize(22);
+      doc.setTextColor("#3C50E0");
+      doc.text("LDCE Placement Cell Registration Form", 60, 20); // Adjust x-position
+
+      // Add user photo
+      const photoUrl = formData.photo;
+      if (photoUrl) {
+        const userPhoto = await loadImage(photoUrl);
+        const imageWidth = 40; // Width of the image
+        const pdfWidth = doc.internal.pageSize.getWidth(); // Width of the PDF
+        const xPos = (pdfWidth - imageWidth) / 2; // Calculate x-position for center
+        const photoCanvas = createCanvas(imageWidth, 40);
+        const photoCtx = photoCanvas.getContext("2d");
+        photoCtx.drawImage(userPhoto, 0, 0, imageWidth, 40);
+        const photoDataUrl = photoCanvas.toDataURL("image/jpeg");
+        doc.addImage(photoDataUrl, "JPEG", xPos, 40, imageWidth, 40); // Adjust size as needed
+      }
+
+      const addSection = (sectionTitle, sectionData, yPos) => {
+        doc.setFillColor("#3C50E0");
+        doc.setDrawColor("#3C50E0");
+        doc.setFont("helvetica", "bold");
+        doc.setTextColor("#FFFFFF");
+        doc.setFontSize(14);
+        doc.rect(10, yPos, 190, 10, "F");
+        doc.text(sectionTitle, 15, yPos + 7);
+
+        doc.setLineWidth(0.5);
+        doc.setDrawColor("#3C50E0");
+        const sectionHeight = calculateSectionHeight(sectionData);
+        if (yPos + sectionHeight + 20 > doc.internal.pageSize.height) {
+          doc.addPage();
+          yPos = 20;
+        } else {
+          yPos += 10;
+        }
+        doc.rect(10, yPos, 190, sectionHeight + 2);
+
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(12);
+        doc.setTextColor("#000000");
+
+        const fields = Object.entries(sectionData);
+        const maxLength = Math.max(...fields.map(([key]) => key.length));
+        const xOffset = 15 + maxLength * 2 + 7;
+        fields.forEach(([key, value]) => {
+          doc.text(`${key}:`, 15, yPos + 10);
+          doc.text(value.toString(), xOffset, yPos + 10);
+          yPos += 10;
+        });
+
+        return yPos;
+      };
+
+      const calculateSectionHeight = (sectionData) => {
+        const fields = Object.entries(sectionData);
+        const fieldHeight = 10;
+        return fields.length * fieldHeight;
+      };
+
+      let yPos = 90;
+
+      yPos = addSection("General Information", General_Information, yPos);
+      yPos += 10;
+      yPos = addSection("Parents Information", Parents_Information, yPos);
+      yPos += 10;
+      yPos = addSection(
+        "Residential Information",
+        Residential_Information,
+        yPos
+      );
+      yPos += 10;
+      yPos = addSection("Academic Information", Academic_Information, yPos);
+      yPos += 10;
+
+      const __dirname = path.resolve();
+      const directoryPath = path.join(__dirname, "pdfs");
+      if (!fs.existsSync(directoryPath)) {
+        fs.mkdirSync(directoryPath);
+      }
+      const filePath = path.join(directoryPath, "registration_form.pdf");
+      console.log("Saving PDF to:", filePath);
+      doc.save(filePath);
+
+      res.download(filePath, "registration_form.pdf", (err) => {
+        if (err) {
+          console.error("Error while downloading the file:", err);
+          res.status(500).send("Error downloading file.");
+        } else {
+          fs.unlink(filePath, (unlinkErr) => {
+            if (unlinkErr) {
+              console.error("Error deleting the file:", unlinkErr);
+            }
+          });
+        }
+      });
+    } catch (error) {
+      console.error("Error generating PDF:", error);
+      res.status(500).send("Error generating PDF.");
     }
   };
 };

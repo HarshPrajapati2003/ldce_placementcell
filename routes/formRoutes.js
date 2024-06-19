@@ -12,5 +12,6 @@ router.patch("/check-profile", formController.updatePendingStudentsByID);
 router.get("/check-profile/:id", formController.fetchPendingStudentsByID);
 router.patch("/apply-job", formController.ApplyForJob);
 router.patch("/student-selection", formController.studentSelection);
+router.post("/generate-pdf", formController.generatePDF);
 
 export default router;

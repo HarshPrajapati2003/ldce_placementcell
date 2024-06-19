@@ -40,7 +40,7 @@ const Rules = () => {
                         <div className="w-px h-full bg-gray-300" />
                       </div>
                       <div className="pt-1 pb-8">
-                        <p className="mb-2 text-md md:text-lg font-bold text-black">
+                        <p className="mb-2 text-md md:text-lg font-bold text-black dark:text-white">
                           {Rule}
                         </p>
                       </div>

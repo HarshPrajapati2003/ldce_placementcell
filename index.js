@@ -14,9 +14,10 @@ const PORT = process.env.PORT || 5000
 dotenv.config();
 connectDB()
 
+// CORS configuration
 app.use(
   cors({
-    origin: "http://localhost:5173", // Replace with your frontend URL
+    origin: ["http://localhost:5173", "https://res.cloudinary.com"],
     credentials: true, // Allow credentials
   })
 );

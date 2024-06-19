@@ -53,7 +53,9 @@ const RecentCompanies = () => {
             setRender(true);
         }
          try {
-           const res = await axios.post('/company/search',{companyNameRegex:search});
+           const res = await axios.post('/company/search', {
+             companyNameRegex: search,
+           });
            if (res) {
              setCompanies(res.data.companies);
              console.log(res.data.companies);
@@ -97,16 +99,16 @@ const RecentCompanies = () => {
     <>
       <DefaultLayout>
         <Toaster position="top-center" reverseOrder={false} />
-        <Breadcrumb pageName="Recent Companies" />
+        <Breadcrumb pageName="Apply For A Job" />
         {/* <!-- ====== RecentCompanies Section Start ====== --> */}
         {!studentProfile && error && <Navigate to="/forms/registration-form" />}
 
         {companies && companies.length > 0 && studentProfile?.data && (
           <div className="w-full max-w-full rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
-            <section className="p-6 dark:bg-gray-100 dark:text-gray-800">
+            <section className="p-6 dark:bg-gray-100 dark:text-gray-800 ">
               <div className="container mx-auto">
-                <h2 className="text-3xl font-bold text-center dark:text-gray-900 text-primary">
-                  Recent companies have arrived for placement.
+                <h2 className="text-xl md:text-3xl font-bold text-center dark:text-gray-900 text-primary">
+                  Exciting Opportunity: Top Companies Arrive for Campus Placement!
                 </h2>
                 <div className="max-w-md mx-auto my-1 -mb-3 sm:my-3 px-1 w-full pt-6">
                   <label
@@ -137,7 +139,7 @@ const RecentCompanies = () => {
                       type="text"
                       value={search}
                       id="default-search"
-                      className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
+                      className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black"
                       placeholder="Search name, email, pan number etc..."
                       onChange={(e) => handleSearch(e)}
                     />

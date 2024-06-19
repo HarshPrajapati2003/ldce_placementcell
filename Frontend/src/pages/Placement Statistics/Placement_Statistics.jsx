@@ -67,10 +67,10 @@ const Placement_Statistics = () => {
             <tbody>
               {Placement_Report.map((e, idx) => (
                 <tr className="border-b hover:bg-gray-50">
-                  <td className="p-4 border-r font-semibold text-center">
+                  <td className="p-4 border-r font-semibold text-center dark:text-white">
                     {idx + 1}
                   </td>
-                  <td className="p-4 border-r font-semibold text-center">
+                  <td className="p-4 border-r font-semibold text-center dark:text-white">
                     {e.title}
                   </td>
                   <td className="p-4 text flex justify-center">

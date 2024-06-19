@@ -26,9 +26,7 @@ const [companyData, setComapnyData] = useState();
     
 const fetchCompanyData = async () => {
     try {
-      const res = await axios.get(
-        `/company/fetch-company/${id}`,
-      );
+      const res = await axios.get(`/company/fetch-company/${id}`);
       if (res) {
         setComapnyData(res.data.company);
       }
@@ -52,16 +50,13 @@ const fetchCompanyData = async () => {
     
     const handleStatusChange = async (status,studentId)=>{
         try {
-            const res = await axios.patch(
-              '/student//student-selection',
-              {
-                status,
-                studentId,
-                companyId: id,
-                companyName: companyData.companyName,
-                currLPA: companyData.packageLPA,
-              },
-            );
+            const res = await axios.patch('/student//student-selection', {
+              status,
+              studentId,
+              companyId: id,
+              companyName: companyData.companyName,
+              currLPA: companyData.packageLPA,
+            });
 
             if (res.status == 200) {
                 console.log(res.data.student)
@@ -110,7 +105,7 @@ const fetchCompanyData = async () => {
         {companyData && (
           <div>
             <div className="h-full bg-gray-200 p-1 md:p-5">
-              <div className="bg-white rounded-lg shadow-xl pb-8">
+              <div className="bg-white dark:border-strokedark dark:bg-boxdark rounded-lg shadow-xl pb-8">
                 <div className="w-full h-[150px]">
                   <img
                     src={CoverOne}
@@ -123,7 +118,7 @@ const fetchCompanyData = async () => {
                     className="w-40 h-40 border-2 border-inherit rounded-full object-contain bg-white"
                   />
                   <div className="flex items-center space-x-2 mt-2">
-                    <p className="text-2xl font-bold text-center text-primary">
+                    <p className="text-2xl font-bold text-center text-primary dark:text-white">
                       {companyData.companyName}
                     </p>
                     <span
@@ -181,11 +176,11 @@ const fetchCompanyData = async () => {
 
               <div className="my-4 flex flex-col 2xl:flex-row space-y-4 2xl:space-y-0 2xl:space-x-4">
                 <div className="w-full flex flex-col">
-                  <div className="flex-1 bg-white rounded-lg shadow-xl p-3 sm:p-8 mt-4">
+                  <div className="flex-1 bg-white dark:border-strokedark dark:bg-boxdark rounded-lg shadow-xl p-3 sm:p-8 mt-4">
                     <h4 className="text-xl text-primary font-bold">
                       Company Information
                     </h4>
-                    <ul className="mt-2 text-gray-700 text-sm md:text-base">
+                    <ul className="mt-2 text-gray-700 text-sm md:text-base dark:text-bodydark1">
                       <li className="flex border-y border-slate-300 py-2">
                         <span className="font-bold w-24 sm:w-50">
                           Company Name :
@@ -246,11 +241,11 @@ const fetchCompanyData = async () => {
 
               <div className="my-4 flex flex-col 2xl:flex-row space-y-4 2xl:space-y-0 2xl:space-x-4">
                 <div className="w-full flex flex-col">
-                  <div className="flex-1 bg-white rounded-lg shadow-xl p-3 sm:p-8 mt-4">
+                  <div className="flex-1 bg-white dark:border-strokedark dark:bg-boxdark rounded-lg shadow-xl p-3 sm:p-8 mt-4">
                     <h4 className="text-xl text-primary font-bold">
                       Eligibility Criteria
                     </h4>
-                    <ul className="mt-2 text-gray-700 text-sm md:text-base">
+                    <ul className="mt-2 text-gray-700 text-sm md:text-base dark:text-bodydark1">
                       <li className="flex border-y border-slate-300 py-2">
                         <span className="font-bold w-24 sm:w-50">Course :</span>
                         <span className="text-gray-700">
@@ -300,26 +295,26 @@ const fetchCompanyData = async () => {
               </div>
 
               <div className="flex flex-col w-full mt-4">
-                <div className="flex-1 bg-white rounded-lg shadow-xl p-3 sm:p-8">
+                <div className="flex-1 bg-white dark:border-strokedark dark:bg-boxdark rounded-lg shadow-xl p-3 sm:p-8">
                   <h4 className="text-xl text-primary font-bold">
                     Address Information
                   </h4>
-                  <p className="mt-2 text-gray-700 text-sm sm:text-md">
+                  <p className="mt-2 text-gray-700 text-sm sm:text-md dark:text-bodydark1">
                     {companyData.address}
                   </p>
                 </div>
               </div>
 
               <div className="flex flex-col w-full mt-4">
-                <div className="flex-1 bg-white rounded-lg shadow-xl p-3 sm:p-8">
+                <div className="flex-1 bg-white dark:border-strokedark dark:bg-boxdark rounded-lg shadow-xl p-3 sm:p-8">
                   <div className="grid divide-y divide-neutral-200 mx-auto">
                     <div className="py-5 overflow-x-auto">
                       <details className="group">
                         <summary className="flex justify-between items-center font-medium cursor-pointer list-none">
-                          <h4 className="text-xl text-primary font-bold">
+                          <h4 className="text-xl text-primary font-bold dark:text-white">
                             List Of Eligible Students
                           </h4>
-                          <span className="transition group-open:rotate-180 text-black">
+                          <span className="transition group-open:rotate-180 text-black dark:text-white">
                             <svg
                               fill="none"
                               height={24}
@@ -357,7 +352,7 @@ const fetchCompanyData = async () => {
                               {companyData.eligibleStudents.map(
                                 (student, idx) => (
                                   <tr
-                                    className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                                    className="bg-white dark:border-strokedark dark:bg-boxdark border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 dark:text-white"
                                     key={idx}
                                   >
                                     <td className="ps-3 py-4"> {idx + 1}</td>
@@ -406,29 +401,30 @@ const fetchCompanyData = async () => {
                         )}
                       </details>
                     </div>
-                    {companyData.applyStudents.length > 0  && <div className="py-5 overflow-x-auto">
-                      <details className="group">
-                        <summary className="flex justify-between items-center font-medium cursor-pointer list-none">
-                          <h4 className="text-xl text-primary font-bold">
-                            List Of Applied Students
-                          </h4>
-                          <span className="transition group-open:rotate-180 text-black">
-                            <svg
-                              fill="none"
-                              height={24}
-                              shapeRendering="geometricPrecision"
-                              stroke="currentColor"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="1.5"
-                              viewBox="0 0 24 24"
-                              width={24}
-                            >
-                              <path d="M6 9l6 6 6-6" />
-                            </svg>
-                          </span>
-                        </summary>
-                        
+                    {companyData.applyStudents.length > 0 && (
+                      <div className="py-5 overflow-x-auto">
+                        <details className="group">
+                          <summary className="flex justify-between items-center font-medium cursor-pointer list-none">
+                            <h4 className="text-xl text-primary font-bold dark:text-white">
+                              List Of Applied Students
+                            </h4>
+                            <span className="transition group-open:rotate-180 text-black dark:text-white">
+                              <svg
+                                fill="none"
+                                height={24}
+                                shapeRendering="geometricPrecision"
+                                stroke="currentColor"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="1.5"
+                                viewBox="0 0 24 24"
+                                width={24}
+                              >
+                                <path d="M6 9l6 6 6-6" />
+                              </svg>
+                            </span>
+                          </summary>
+
                           <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mt-4 ">
                             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 bg-primary text-white">
                               <tr>
@@ -455,7 +451,7 @@ const fetchCompanyData = async () => {
                             <tbody>
                               {companyData.applyStudents.map((student, idx) => (
                                 <tr
-                                  className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                                  className="bg-white dark:border-strokedark dark:bg-boxdark border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 dark:text-white"
                                   key={idx}
                                 >
                                   <td className="ps-3 py-4"> {idx + 1}</td>
@@ -530,7 +526,7 @@ const fetchCompanyData = async () => {
                                       ) : (
                                         <select
                                           id="small"
-                                          className="block w-30 p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                          className="block w-30 p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                           onChange={(e) =>
                                             handleStatusChange(
                                               e.target.value,
@@ -555,30 +551,32 @@ const fetchCompanyData = async () => {
                               ))}
                             </tbody>
                           </table>
-                      </details>
-                    </div>}
-                    {companyData.selectedStudents.length > 0 && <div className="py-5 overflow-x-auto">
-                      <details className="group">
-                        <summary className="flex justify-between items-center font-medium cursor-pointer list-none">
-                          <h4 className="text-xl text-primary font-bold">
-                            List Of Selected Students
-                          </h4>
-                          <span className="transition group-open:rotate-180 text-black">
-                            <svg
-                              fill="none"
-                              height={24}
-                              shapeRendering="geometricPrecision"
-                              stroke="currentColor"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="1.5"
-                              viewBox="0 0 24 24"
-                              width={24}
-                            >
-                              <path d="M6 9l6 6 6-6" />
-                            </svg>
-                          </span>
-                        </summary>
+                        </details>
+                      </div>
+                    )}
+                    {companyData.selectedStudents.length > 0 && (
+                      <div className="py-5 overflow-x-auto">
+                        <details className="group">
+                          <summary className="flex justify-between items-center font-medium cursor-pointer list-none">
+                            <h4 className="text-xl text-primary font-bold dark:text-white">
+                              List Of Selected Students
+                            </h4>
+                            <span className="transition group-open:rotate-180 text-black dark:text-white">
+                              <svg
+                                fill="none"
+                                height={24}
+                                shapeRendering="geometricPrecision"
+                                stroke="currentColor"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="1.5"
+                                viewBox="0 0 24 24"
+                                width={24}
+                              >
+                                <path d="M6 9l6 6 6-6" />
+                              </svg>
+                            </span>
+                          </summary>
                           <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mt-4 ">
                             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 bg-primary text-white">
                               <tr>
@@ -603,110 +601,117 @@ const fetchCompanyData = async () => {
                               </tr>
                             </thead>
                             <tbody>
-                              {companyData.selectedStudents.map((student, idx) => (
-                                <tr
-                                  className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
-                                  key={idx}
-                                >
-                                  <td className="ps-3 py-4"> {idx + 1}</td>
-                                  <th
-                                    scope="row"
-                                    className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
+                              {companyData.selectedStudents.map(
+                                (student, idx) => (
+                                  <tr
+                                    className="bg-white dark:border-strokedark dark:bg-boxdark border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 dark:text-white"
+                                    key={idx}
                                   >
-                                    <img
-                                      className="w-10 h-10 rounded-full border-2 border-inherit"
-                                      src={student.photo}
-                                      alt="Jese image"
-                                    />
-                                    <div className="ps-3">
-                                      <div className="text-base font-semibold">
-                                        {student.firstName} {student.lastName}
-                                      </div>
-                                      <div className="font-normal text-gray-500">
-                                        Enrollment No. :{' '}
-                                        {student.enrollmentNumber}
-                                      </div>
-                                    </div>
-                                  </th>
-                                  <td className="px-6 py-4">
-                                    <div className="font-normal text-gray-500">
-                                      {' '}
-                                      {student.department}
-                                    </div>
-                                    <div className="font-normal text-gray-500 mt-1">
-                                      {' '}
-                                      {student.email}
-                                    </div>
-                                  </td>
-                                  <td
-                                    className={`px-6 py-4 font-bold ${companyData.applyStudents.some((studentObj) => studentObj._id === student._id) ? 'text-green-500' : 'text-primary'}`}
-                                  >
-                                    {companyData.applyStudents.some(
-                                      (studentObj) =>
-                                        studentObj._id === student._id,
-                                    )
-                                      ? 'Applied'
-                                      : 'Not Apply'}
-                                  </td>
-                                  <td class="px-6 py-4">
-                                    <a
-                                      href={`${student.resume}`}
-                                      className="hover:text-blue-500"
-                                      target="_blank"
+                                    <td className="ps-3 py-4"> {idx + 1}</td>
+                                    <th
+                                      scope="row"
+                                      className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
                                     >
-                                      <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="24"
-                                        height="24"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        class="lucide lucide-eye"
+                                      <img
+                                        className="w-10 h-10 rounded-full border-2 border-inherit"
+                                        src={student.photo}
+                                        alt="Jese image"
+                                      />
+                                      <div className="ps-3">
+                                        <div className="text-base font-semibold">
+                                          {student.firstName} {student.lastName}
+                                        </div>
+                                        <div className="font-normal text-gray-500">
+                                          Enrollment No. :{' '}
+                                          {student.enrollmentNumber}
+                                        </div>
+                                      </div>
+                                    </th>
+                                    <td className="px-6 py-4">
+                                      <div className="font-normal text-gray-500">
+                                        {' '}
+                                        {student.department}
+                                      </div>
+                                      <div className="font-normal text-gray-500 mt-1">
+                                        {' '}
+                                        {student.email}
+                                      </div>
+                                    </td>
+                                    <td
+                                      className={`px-6 py-4 font-bold ${companyData.applyStudents.some((studentObj) => studentObj._id === student._id) ? 'text-green-500' : 'text-primary'}`}
+                                    >
+                                      {companyData.applyStudents.some(
+                                        (studentObj) =>
+                                          studentObj._id === student._id,
+                                      )
+                                        ? 'Applied'
+                                        : 'Not Apply'}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                      <a
+                                        href={`${student.resume}`}
+                                        className="hover:text-blue-500"
+                                        target="_blank"
                                       >
-                                        <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
-                                        <circle cx="12" cy="12" r="3" />
-                                      </svg>
-                                    </a>
-                                  </td>
-                                  <td className="px-6 py-4">
-                                    <div className="max-w-sm mx-auto">
-                                      {student.currApply == id ? (
-                                        <h1 className="text-green-500 font-bold">
-                                          Selected
-                                        </h1>
-                                      ) : (
-                                        <select
-                                          id="small"
-                                          className="block w-30 p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                          onChange={(e) =>
-                                            handleStatusChange(
-                                              e.target.value,
-                                              student._id,
-                                            )
-                                          }
+                                        <svg
+                                          xmlns="http://www.w3.org/2000/svg"
+                                          width="24"
+                                          height="24"
+                                          viewBox="0 0 24 24"
+                                          fill="none"
+                                          stroke="currentColor"
+                                          stroke-width="2"
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                          class="lucide lucide-eye"
                                         >
-                                          <option
-                                            value="Action"
-                                            selected
-                                            disabled
+                                          <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+                                          <circle cx="12" cy="12" r="3" />
+                                        </svg>
+                                      </a>
+                                    </td>
+                                    <td className="px-6 py-4">
+                                      <div className="max-w-sm mx-auto">
+                                        {student.currApply == id ? (
+                                          <h1 className="text-green-500 font-bold">
+                                            Selected
+                                          </h1>
+                                        ) : (
+                                          <select
+                                            id="small"
+                                            className="block w-30 p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            onChange={(e) =>
+                                              handleStatusChange(
+                                                e.target.value,
+                                                student._id,
+                                              )
+                                            }
                                           >
-                                            Action
-                                          </option>
-                                          <option value="Select">Select</option>
-                                          <option value="Reject">Reject</option>
-                                        </select>
-                                      )}
-                                    </div>
-                                  </td>
-                                </tr>
-                              ))}
+                                            <option
+                                              value="Action"
+                                              selected
+                                              disabled
+                                            >
+                                              Action
+                                            </option>
+                                            <option value="Select">
+                                              Select
+                                            </option>
+                                            <option value="Reject">
+                                              Reject
+                                            </option>
+                                          </select>
+                                        )}
+                                      </div>
+                                    </td>
+                                  </tr>
+                                ),
+                              )}
                             </tbody>
                           </table>
-                      </details>
-                    </div>}
+                        </details>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

@@ -7,7 +7,7 @@ const Team = () => {
     <DefaultLayout>
       <Breadcrumb pageName="Team" />
       {/* <!-- ====== Team Section Start ====== --> */}
-      <div className="bg-white">
+      <div className="bg-white border-stroke dark:border-strokedark dark:bg-boxdark">
         <div className="flex items-center justify-center min-h-screen pt-10">
           <div className="flex flex-col">
             <div className="flex flex-col mt-8">
@@ -17,11 +17,11 @@ const Team = () => {
                 <div className="flex flex-wrap justify-center text-center mb-24">
                   <div className="w-full lg:w-10/12 px-4">
                     {/* Header */}
-                    <h1 className="text-primary text-4xl font-bold mb-8">
+                    <h1 className="text-primary text-4xl font-bold mb-8 dark:text-shadow-white">
                       Meet Our Team
                     </h1>
                     {/* Description */}
-                    <p className="text-black text-lg">
+                    <p className="text-black text-lg dark:text-white">
                       "Our Placement Coordinator Team consists of dedicated
                       professionals who have successfully orchestrated numerous
                       placement drives, ensuring seamless coordination between
@@ -131,11 +131,11 @@ const Team = () => {
           </div>
         </div>
         <div className="flex items-center justify-center px-2 pt-10">
-          <h5 class="text-xl font-bold dark:text-white py-10 text-primary text-center sm:text-title-md2 text-title-sm">
+          <h5 class="text-xl font-bold dark:text-white py-10 text-primary text-center sm:text-title-md2 text-title-sm dark:text-shadow-primary">
             Department Placement Committee Conveners
           </h5>
         </div>
-        <div className="grid gap-10 mx-auto lg:max-w-screen-lg grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 bg-white px-1 sm:px-2">
+        <div className="grid gap-10 mx-auto lg:max-w-screen-lg grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 bg-white dark:bg-boxdark px-1 sm:px-2">
           <div className="flex flex-col items-center">
             <img
               className="object-cover w-20 h-20 mb-2 rounded-full shadow border-2 border-2"
@@ -251,11 +251,11 @@ const Team = () => {
         </div>
 
         <div className="flex items-center justify-center px-2 pt-10">
-          <h5 class="text-xl font-bold dark:text-white py-10 text-primary text-center sm:text-title-md2 text-title-sm">
+          <h5 class="text-xl font-bold dark:text-white py-10 text-primary text-center sm:text-title-md2 text-title-sm dark:text-shadow-primary">
             Student Placement Coordinators
           </h5>
         </div>
-        <div className="grid gap-10 mx-auto lg:max-w-screen-lg grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 bg-white px-1 sm:px-2 pb-10">
+        <div className="grid gap-10 mx-auto lg:max-w-screen-lg grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 bg-white dark:bg-boxdark px-1 sm:px-2 pb-10">
           <div className="flex flex-col items-center">
             <img
               className="object-cover w-20 h-20 mb-2 rounded-full shadow border-2"

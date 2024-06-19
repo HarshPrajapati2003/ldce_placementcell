@@ -14,7 +14,7 @@ const Recruitment_Process = () => {
             </h2>
             <div className="grid gap-6 mb-16 mt-8 md:grid-cols-2 lg:grid-cols-3">
               <div className="flex flex-col p-8 space-y-4 rounded-md dark:bg-gray-50 rounded-full border-2">
-                <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 text-xl font-bold rounded-full border-2 text-primary">
+                <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 text-xl font-bold rounded-full border-2 dark:bg-white dark:text-gray-50 text-primary">
                   1
                 </div>
                 <p className="text-xl sm:text-2xl font-semibold">
@@ -22,7 +22,7 @@ const Recruitment_Process = () => {
                 </p>
               </div>
               <div className="flex flex-col p-8 space-y-4 rounded-md dark:bg-gray-50 rounded-full border-2">
-                <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 text-xl font-bold rounded-full border-2 dark:bg-violet-600 dark:text-gray-50 text-primary">
+                <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 text-xl font-bold rounded-full border-2 dark:bg-white dark:text-gray-50 text-primary">
                   2
                 </div>
                 <p className="text-xl sm:text-2xl font-semibold">
@@ -30,7 +30,7 @@ const Recruitment_Process = () => {
                 </p>
               </div>
               <div className="flex flex-col p-8 space-y-4 rounded-md dark:bg-gray-50 rounded-full border-2">
-                <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 text-xl font-bold rounded-full border-2 dark:bg-violet-600 dark:text-gray-50 text-primary">
+                <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 text-xl font-bold rounded-full border-2 dark:bg-white dark:text-gray-50 text-primary">
                   3
                 </div>
                 <p className="text-xl sm:text-2xl font-semibold">
@@ -39,7 +39,7 @@ const Recruitment_Process = () => {
                 </p>
               </div>
               <div className="flex flex-col p-8 space-y-4 rounded-md dark:bg-gray-50 rounded-full border-2">
-                <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 text-xl font-bold rounded-full border-2 text-primary">
+                <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 text-xl font-bold rounded-full border-2 dark:bg-white dark:text-gray-50 text-primary">
                   4
                 </div>
                 <p className="text-xl sm:text-2xl font-semibold">
@@ -47,7 +47,7 @@ const Recruitment_Process = () => {
                 </p>
               </div>
               <div className="flex flex-col p-8 space-y-4 rounded-md dark:bg-gray-50 rounded-full border-2">
-                <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 text-xl font-bold rounded-full border-2 dark:bg-violet-600 dark:text-gray-50 text-primary">
+                <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 text-xl font-bold rounded-full border-2 dark:bg-white dark:text-gray-50 text-primary">
                   5
                 </div>
                 <p className="text-xl sm:text-2xl font-semibold">
@@ -55,7 +55,7 @@ const Recruitment_Process = () => {
                 </p>
               </div>
               <div className="flex flex-col p-8 space-y-4 rounded-md dark:bg-gray-50 rounded-full border-2">
-                <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 text-xl font-bold rounded-full border-2 dark:bg-violet-600 dark:text-gray-50 text-primary">
+                <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 text-xl font-bold rounded-full border-2 dark:bg-white dark:text-gray-50 text-primary">
                   6
                 </div>
                 <p className="text-xl sm:text-2xl font-semibold">
@@ -63,7 +63,7 @@ const Recruitment_Process = () => {
                 </p>
               </div>
               <div className="flex flex-col p-8 space-y-4 rounded-md dark:bg-gray-50 rounded-full border-2">
-                <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 text-xl font-bold rounded-full border-2 text-primary">
+                <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 text-xl font-bold rounded-full border-2 dark:bg-white dark:text-gray-50 text-primary">
                   7
                 </div>
                 <p className="text-xl sm:text-2xl font-semibold">
@@ -71,7 +71,7 @@ const Recruitment_Process = () => {
                 </p>
               </div>
               <div className="flex flex-col p-8 space-y-4 rounded-md dark:bg-gray-50 rounded-full border-2">
-                <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 text-xl font-bold rounded-full border-2 dark:bg-violet-600 dark:text-gray-50 text-primary">
+                <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 text-xl font-bold rounded-full border-2 dark:bg-white dark:text-gray-50 text-primary">
                   8
                 </div>
                 <p className="text-xl sm:text-2xl font-semibold">
@@ -79,7 +79,7 @@ const Recruitment_Process = () => {
                 </p>
               </div>
               <div className="flex flex-col p-8 space-y-4 rounded-md dark:bg-gray-50 rounded-full border-2">
-                <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 text-xl font-bold rounded-full border-2 dark:bg-violet-600 dark:text-gray-50 text-primary">
+                <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 text-xl font-bold rounded-full border-2 dark:bg-white dark:text-gray-50 text-primary">
                   9
                 </div>
                 <p className="text-xl sm:text-2xl font-semibold">

@@ -10,7 +10,7 @@ const Contact = () => {
       {/* <!-- ====== Contact Section Start ====== --> */}
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:gap-8 place-items-center">
         <div className="rounded-lg">
-          <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+          <div className="max-w-sm p-6 bg-white dark:border-strokedark dark:bg-boxdark border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <a href="#">
               <h5 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white text-center">
                 Training & Placement Cell
@@ -88,7 +88,7 @@ const Contact = () => {
               </ul>
             </>
             <Link
-              to = "/rules"
+              to="/rules"
               className="inline-flex font-medium items-center text-blue-600 hover:underline"
             >
               See our guideline

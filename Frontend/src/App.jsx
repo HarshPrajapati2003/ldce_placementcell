@@ -5,7 +5,6 @@ import Loader from './common/Loader';
 import PageTitle from './components/PageTitle';
 import SignIn from './pages/Authentication/SignIn';
 import SignUp from './pages/Authentication/SignUp';
-import FormLayout from './pages/Form/FormLayout';
 import Overview from './pages/Overview/Overview';
 import Team from './pages/Team/Team';
 import Recruiters from './pages/Recruiters/Recruiters';
@@ -86,7 +85,7 @@ function App() {
           path="/recent-companies"
           element={
             <Protected>
-              <PageTitle title="Recent Companies" />
+              <PageTitle title="Apply For A Job" />
               <RecentCompanies />
             </Protected>
           }
@@ -95,7 +94,7 @@ function App() {
           path="/all-companies"
           element={
             <Protected>
-              <PageTitle title="Recent Companies" />
+              <PageTitle title="All Companies" />
               <Companies />
             </Protected>
           }
@@ -185,15 +184,6 @@ function App() {
           }
         />
         <Route
-          path="/forms/form-layout"
-          element={
-            <>
-              <PageTitle title="Form Layout | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <FormLayout />
-            </>
-          }
-        />
-        <Route
           path="/forms/registration-form"
           element={
             <Protected>
@@ -215,7 +205,7 @@ function App() {
           path="/auth/signin"
           element={
             <>
-              <PageTitle title="Signin | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="Signin | LDCE - Placementcell" />
               <SignIn />
             </>
           }
@@ -224,7 +214,7 @@ function App() {
           path="/auth/signup"
           element={
             <>
-              <PageTitle title="Signup | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="Signup | LDCE - Placementcell" />
               <SignUp />
             </>
           }
@@ -233,7 +223,7 @@ function App() {
           path="/auth/forgot-password"
           element={
             <>
-              <PageTitle title="Forgot Password | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="Forgot Password | LDCE - Placementcell" />
               <ForgotPassword />
             </>
           }

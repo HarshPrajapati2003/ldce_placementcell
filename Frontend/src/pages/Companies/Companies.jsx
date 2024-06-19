@@ -45,9 +45,7 @@ const Companies = () => {
   };
   const fetchData = async () => {
     try {
-      const res = await axios.get(
-        '/company/fetch-companies',
-      );
+      const res = await axios.get('/company/fetch-companies');
       if (res.status == 200) {
         setCompanies(res.data.companies);
       }
@@ -112,7 +110,7 @@ const Companies = () => {
                       type="text"
                       value={search}
                       id="default-search"
-                      className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
+                      className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black "
                       placeholder="Search name, email, pan number etc..."
                       onChange={(e) => handleSearch(e)}
                     />

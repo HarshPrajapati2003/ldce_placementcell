@@ -64,12 +64,12 @@ const Overview = () => {
                 />
               </div>
 
-              <div className="lg:py-24">
-                <h2 className="text-3xl font-bold sm:text-4xl text-primary">
+              <div className="lg:py-24 text-center lg:text-start">
+                <h2 className="text-3xl font-bold sm:text-4xl text-primary dark:text-white dark:text-shadow-primary">
                   Welcome to Training and Placement Cell of LDCE
                 </h2>
 
-                <p className="mt-4 text-black font-bold">
+                <p className="mt-4 text-black font-bold dark:text-bodydark1">
                   The Training & Placement cell at L. D. College Of Engineering
                   is committed to providing exceptional opportunities for
                   students to kickstart their careers. At L. D. College Of
@@ -88,9 +88,9 @@ const Overview = () => {
             </div>
           </div>
         </section>
-        <div className="max-w-screen-xl mx-auto px-5 bg-white min-h-sceen pb-10">
+        <div className="max-w-screen-xl mx-auto px-5 bg-white min-h-sceen pb-10 dark:bg-boxdark">
           <div className="flex flex-col items-center">
-            <h2 className="font-bold text-3xl mt-2 tracking-tight text-primary text-center">
+            <h2 className="font-bold text-3xl mt-2 tracking-tight text-primary dark:text-white text-center dark:text-shadow-primary">
               Our primary responsibilities
             </h2>
           </div>
@@ -98,11 +98,11 @@ const Overview = () => {
             <div className="py-5">
               <details className="group">
                 <summary className="flex justify-between items-center font-medium cursor-pointer list-none">
-                  <span className="text-black">
+                  <span className="text-black dark:text-white">
                     {' '}
                     Facilitating Industrial Training
                   </span>
-                  <span className="transition group-open:rotate-180 text-black">
+                  <span className="transition group-open:rotate-180 text-black dark:text-white">
                     <svg
                       fill="none"
                       height={24}
@@ -118,7 +118,7 @@ const Overview = () => {
                     </svg>
                   </span>
                 </summary>
-                <p className="text-neutral-600 mt-3 group-open:animate-fadeIn">
+                <p className="text-neutral-600 dark:text-bodydark1 mt-3 group-open:animate-fadeIn">
                   We ensure that our undergraduate (B.Tech.) students undergo
                   mandatory industrial training as a vital part of their
                   curriculum, equipping them with practical skills and industry
@@ -129,10 +129,10 @@ const Overview = () => {
             <div className="py-5">
               <details className="group">
                 <summary className="flex justify-between items-center font-medium cursor-pointer list-none">
-                  <span className="text-black">
+                  <span className="text-black dark:text-white">
                     Inviting Reputable Companies
                   </span>
-                  <span className="transition group-open:rotate-180 text-black">
+                  <span className="transition group-open:rotate-180 text-black dark:text-white">
                     <svg
                       fill="none"
                       height={24}
@@ -148,7 +148,7 @@ const Overview = () => {
                     </svg>
                   </span>
                 </summary>
-                <p className="text-neutral-600 mt-3 group-open:animate-fadeIn">
+                <p className="text-neutral-600 dark:text-bodydark1 mt-3 group-open:animate-fadeIn">
                   We actively invite renowned companies, institutions, and
                   organizations to our campus for both undergraduate and
                   postgraduate placements, ensuring our students have access to
@@ -159,11 +159,11 @@ const Overview = () => {
             <div className="py-5">
               <details className="group">
                 <summary className="flex justify-between items-center font-medium cursor-pointer list-none">
-                  <span className="text-black">
+                  <span className="text-black dark:text-white">
                     {' '}
                     Collaborating for Internships and Training Programs
                   </span>
-                  <span className="transition group-open:rotate-180 text-black">
+                  <span className="transition group-open:rotate-180 text-black dark:text-white">
                     <svg
                       fill="none"
                       height={24}
@@ -179,7 +179,7 @@ const Overview = () => {
                     </svg>
                   </span>
                 </summary>
-                <p className="text-neutral-600 mt-3 group-open:animate-fadeIn">
+                <p className="text-neutral-600 dark:text-bodydark1 mt-3 group-open:animate-fadeIn">
                   The T&P cell collaborates with leading organizations to
                   establish internship and training programs for our students,
                   enabling them to gain hands-on experience and valuable
@@ -190,8 +190,10 @@ const Overview = () => {
             <div className="py-5">
               <details className="group">
                 <summary className="flex justify-between items-center font-medium cursor-pointer list-none">
-                  <span className="text-black">Campus Recruitment</span>
-                  <span className="transition group-open:rotate-180 text-black">
+                  <span className="text-black dark:text-white">
+                    Campus Recruitment
+                  </span>
+                  <span className="transition group-open:rotate-180 text-black dark:text-white">
                     <svg
                       fill="none"
                       height={24}
@@ -207,7 +209,7 @@ const Overview = () => {
                     </svg>
                   </span>
                 </summary>
-                <p className="text-neutral-600 mt-3 group-open:animate-fadeIn">
+                <p className="text-neutral-600 dark:text-bodydark1 mt-3 group-open:animate-fadeIn">
                   Our office maintains strong relationships with numerous
                   companies and industries across the country. Annually, nearly
                   200 esteemed organizations visit our campus to conduct
@@ -278,7 +280,7 @@ const Overview = () => {
             </div>
           </div>
         </div>
-        <div className="max-w-3xl mx-auto px-3 text-center mt-2 text-black font-medium">
+        <div className="max-w-3xl mx-auto px-3 text-center mt-2 text-black dark:text-bodydark1 font-medium">
           <h1 className="text-3xl font-bold text-gray-900 leading-tight mb-2 pb-4 relative">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500">
               Functions of the cell
@@ -312,7 +314,7 @@ const Overview = () => {
             ))}
           </ul>
         </div>
-        <div className="max-w-3xl mx-auto px-3 text-center mt-10 text-black font-medium">
+        <div className="max-w-3xl mx-auto px-3 text-center mt-10 text-black dark:text-bodydark1 font-medium">
           <h1 className="text-3xl font-bold text-gray-900 leading-tight mb-2 pb-4 relative">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500">
               Facilities of the cell
@@ -346,7 +348,7 @@ const Overview = () => {
             ))}
           </ul>
         </div>
-        <div className="max-w-3xl mx-auto px-3 text-center mt-10 text-black font-medium">
+        <div className="max-w-3xl mx-auto px-3 text-center mt-10 text-black dark:text-bodydark1 font-medium">
           <h1 className="text-3xl font-bold text-gray-900 leading-tight mb-2 pb-4 relative">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500">
               Role of the coordinator
@@ -380,7 +382,7 @@ const Overview = () => {
             ))}
           </ul>
         </div>
-        <div className="max-w-3xl mx-auto px-3 text-center mt-10 text-black font-medium pb-5">
+        <div className="max-w-3xl mx-auto px-3 text-center mt-10 text-black dark:text-bodydark1 font-medium pb-5">
           <h1 className="text-3xl font-bold text-gray-900 leading-tight mb-2 pb-4 relative">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500">
               Role of faculty member

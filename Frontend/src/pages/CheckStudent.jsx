@@ -40,10 +40,10 @@ const CheckStudent = () => {
      isRender(!render);
      console.log(studentData);
      try {
-       const res = await axios.patch(
-         '/student/check-profile',
-         { id, isVerified: selectedStatus.toLowerCase() },
-       );
+       const res = await axios.patch('/student/check-profile', {
+         id,
+         isVerified: selectedStatus.toLowerCase(),
+       });
        if (res) {
          // Update the state with the response data
          setStudentData(res.data.students);
@@ -57,7 +57,7 @@ const CheckStudent = () => {
    };
   const fetchStudentData = async () => {
     try {
-      const res = await axios.get(`/student/check-profile/${id}`)
+      const res = await axios.get(`/student/check-profile/${id}`);
       if (res) {
         setStudentData(res.data.student);
       }
@@ -115,7 +115,7 @@ const CheckStudent = () => {
         {studentData && (
           <div>
             <div className="h-full bg-gray-200 p-1 md:p-5">
-              <div className="bg-white rounded-lg shadow-xl pb-8">
+              <div className="bg-white rounded-lg shadow-xl pb-8 dark:border-strokedark dark:bg-boxdark">
                 <div className="w-full h-[150px]">
                   <img
                     src={CoverOne}
@@ -128,7 +128,7 @@ const CheckStudent = () => {
                     className="w-40 h-40 border-2 border-inherit rounded-full object-contain bg-white"
                   />
                   <div className="flex items-center space-x-2 mt-2">
-                    <p className="text-2xl font-bold text-center text-slate-900">
+                    <p className="text-2xl font-bold text-center text-slate-900 dark:text-white">
                       {studentData.firstName} {studentData.lastName}
                     </p>
                     {studentData.isVerified == 'verified' && (
@@ -186,7 +186,7 @@ const CheckStudent = () => {
                   <div>
                     <select
                       id="small"
-                      className="block w-30 p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      className="block w-30 p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       onChange={(e) =>
                         handleStatusChange(e.target.value, studentData._id)
                       }
@@ -201,7 +201,7 @@ const CheckStudent = () => {
                 </div>
               </div>
               {studentData.isVerified && (
-                <div className="flex-1 bg-white rounded-lg shadow-xl mt-4 p-8 break-all sm:break-normal">
+                <div className="flex-1 bg-white dark:border-strokedark dark:bg-boxdark rounded-lg shadow-xl mt-4 p-8 break-all sm:break-normal">
                   <h4 className="text-xl text-primary font-bold">
                     Verification Status
                   </h4>
@@ -264,7 +264,7 @@ const CheckStudent = () => {
                           <h5 className="mb-3 text-lg font-semibold text-black dark:text-[#34D399] ">
                             Verification Completed Successfully
                           </h5>
-                          <p className="text-base leading-relaxed text-body">
+                          <p className="text-base leading-relaxed text-body dark:text-[#34D399]">
                             You will receive an email notification whenever a
                             company arrives for placement but only if your
                             eligibility criteria match with the requirements of
@@ -310,11 +310,11 @@ const CheckStudent = () => {
               )}
               <div className="my-4 flex flex-col 2xl:flex-row space-y-4 2xl:space-y-0 2xl:space-x-4">
                 <div className="w-full flex flex-col">
-                  <div className="flex-1 bg-white rounded-lg shadow-xl p-3 sm:p-8">
+                  <div className="flex-1 bg-white dark:border-strokedark dark:bg-boxdark rounded-lg shadow-xl p-3 sm:p-8">
                     <h4 className="text-xl text-primary font-bold">
                       Personal Information
                     </h4>
-                    <div className="grid grid-cols-1 md:grid-cols-2 md:gap-2 text-sm md:text-base">
+                    <div className="grid grid-cols-1 md:grid-cols-2 md:gap-2 text-sm md:text-base dark:text-bodydark1">
                       <div>
                         <ul className="mt-2 text-gray-700">
                           <li className="flex border-y border-slate-300 py-2">
@@ -414,14 +414,14 @@ const CheckStudent = () => {
                   </div>
 
                   <div className="flex flex-col w-full mt-4">
-                    <div className="flex-1 bg-white rounded-lg shadow-xl p-3 sm:p-8">
+                    <div className="flex-1 bg-white dark:border-strokedark dark:bg-boxdark rounded-lg shadow-xl p-3 sm:p-8">
                       <h4 className="text-xl text-primary font-bold">
                         Residential Information
                       </h4>
-                      <p className="mt-2 text-gray-700 text-sm sm:text-md">
+                      <p className="mt-2 text-gray-700 text-sm sm:text-md dark:text-bodydark1">
                         {studentData.address}
                       </p>
-                      <ul className="mt-2 text-gray-700 text-sm md:text-base">
+                      <ul className="mt-2 text-gray-700 text-sm md:text-base dark:text-bodydark1">
                         <li className="flex border-y border-slate-300 py-2">
                           <span className="font-bold w-24 sm:w-30">
                             State Name:
@@ -451,11 +451,11 @@ const CheckStudent = () => {
                     </div>
                   </div>
 
-                  <div className="flex-1 bg-white rounded-lg shadow-xl p-3 sm:p-8 mt-4">
+                  <div className="flex-1 bg-white dark:border-strokedark dark:bg-boxdark rounded-lg shadow-xl p-3 sm:p-8 mt-4">
                     <h4 className="text-xl text-primary font-bold">
                       Parents Information
                     </h4>
-                    <ul className="mt-2 text-gray-700 text-sm md:text-base">
+                    <ul className="mt-2 text-gray-700 text-sm md:text-base dark:text-bodydark1">
                       <li className="flex border-y border-slate-300 py-2">
                         <span className="font-bold w-24 sm:w-30">
                           Father Name:
@@ -484,11 +484,11 @@ const CheckStudent = () => {
                     </ul>
                   </div>
 
-                  <div className="flex-1 bg-white rounded-lg shadow-xl p-3 sm:p-8 mt-4">
+                  <div className="flex-1 bg-white dark:border-strokedark dark:bg-boxdark rounded-lg shadow-xl p-3 sm:p-8 mt-4">
                     <h4 className="text-xl text-primary font-bold">
                       Academic Information
                     </h4>
-                    <div className="grid grid-cols-1 md:grid-cols-2 md:gap-2 text-sm md:text-base">
+                    <div className="grid grid-cols-1 md:grid-cols-2 md:gap-2 text-sm md:text-base dark:text-bodydark1">
                       <div>
                         <ul className="mt-2 text-gray-700">
                           <li className="flex border-y border-slate-300 py-2">

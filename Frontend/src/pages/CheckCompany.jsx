@@ -69,9 +69,7 @@ const CheckCompany = () => {
 
   const fetchCompanyData = async () => {
     try {
-      const res = await axios.get(
-        `/company/fetch-company/${id}`,
-      );
+      const res = await axios.get(`/company/fetch-company/${id}`);
       if (res) {
         setComapnyData(res.data.company);
       }
@@ -105,7 +103,7 @@ const CheckCompany = () => {
       const res = await axios.patch('/student/apply-job', {
         resume: data.resume,
         studentId: studentProfile.data._id,
-        companyId: id
+        companyId: id,
       });
        
        if (res.status == 200) {
@@ -160,7 +158,7 @@ const CheckCompany = () => {
         {companyData && (
           <div>
             <div className="h-full bg-gray-200 p-1 md:p-5">
-              <div className="bg-white rounded-lg shadow-xl pb-8">
+              <div className="bg-white dark:border-strokedark dark:bg-boxdark rounded-lg shadow-xl pb-8">
                 <div className="w-full h-[150px]">
                   <img
                     src={CoverOne}
@@ -173,7 +171,7 @@ const CheckCompany = () => {
                     className="w-40 h-40 border-2 border-inherit rounded-full object-contain bg-white"
                   />
                   <div className="flex items-center space-x-2 mt-2">
-                    <p className="text-2xl font-bold text-center text-primary">
+                    <p className="text-2xl font-bold text-center text-primary dark:text-white">
                       {companyData.companyName}
                     </p>
                     <span
@@ -263,11 +261,11 @@ const CheckCompany = () => {
 
               <div className="my-4 flex flex-col 2xl:flex-row space-y-4 2xl:space-y-0 2xl:space-x-4">
                 <div className="w-full flex flex-col">
-                  <div className="flex-1 bg-white rounded-lg shadow-xl p-3 sm:p-8 mt-4">
+                  <div className="flex-1 bg-white dark:border-strokedark dark:bg-boxdark rounded-lg shadow-xl p-3 sm:p-8 mt-4">
                     <h4 className="text-xl text-primary font-bold">
                       Company Information
                     </h4>
-                    <ul className="mt-2 text-gray-700 text-sm md:text-base">
+                    <ul className="mt-2 text-gray-700 dark:text-bodydark1 text-sm md:text-base">
                       <li className="flex border-y border-slate-300 py-2">
                         <span className="font-bold w-24 sm:w-50">
                           Company Name :
@@ -328,11 +326,11 @@ const CheckCompany = () => {
 
               <div className="my-4 flex flex-col 2xl:flex-row space-y-4 2xl:space-y-0 2xl:space-x-4">
                 <div className="w-full flex flex-col">
-                  <div className="flex-1 bg-white rounded-lg shadow-xl p-3 sm:p-8 mt-4">
+                  <div className="flex-1 bg-white dark:border-strokedark dark:bg-boxdark rounded-lg shadow-xl p-3 sm:p-8 mt-4">
                     <h4 className="text-xl text-primary font-bold">
                       Eligibility Criteria
                     </h4>
-                    <ul className="mt-2 text-gray-700 text-sm md:text-base">
+                    <ul className="mt-2 text-gray-700 dark:text-bodydark1 text-sm md:text-base">
                       <li className="flex border-y border-slate-300 py-2">
                         <span className="font-bold w-24 sm:w-50">Course :</span>
                         <span className="text-gray-700">
@@ -382,26 +380,26 @@ const CheckCompany = () => {
               </div>
 
               <div className="flex flex-col w-full mt-4">
-                <div className="flex-1 bg-white rounded-lg shadow-xl p-3 sm:p-8">
+                <div className="flex-1 bg-white dark:border-strokedark dark:bg-boxdark rounded-lg shadow-xl p-3 sm:p-8">
                   <h4 className="text-xl text-primary font-bold">
                     Address Information
                   </h4>
-                  <p className="mt-2 text-gray-700 text-sm sm:text-md">
+                  <p className="mt-2 text-gray-700 dark:text-bodydark1 text-sm sm:text-md">
                     {companyData.address}
                   </p>
                 </div>
               </div>
 
               <div className="flex flex-col w-full mt-4">
-                <div className="flex-1 bg-white rounded-lg shadow-xl p-3 sm:p-8">
+                <div className="flex-1 bg-white dark:border-strokedark dark:bg-boxdark rounded-lg shadow-xl p-3 sm:p-8">
                   <div className="grid divide-y divide-neutral-200 mx-auto">
                     <div className="py-5 overflow-x-auto">
                       <details className="group">
                         <summary className="flex justify-between items-center font-medium cursor-pointer list-none">
-                          <h4 className="text-xl text-primary font-bold">
+                          <h4 className="text-xl text-primary font-bold dark:text-white">
                             List Of Eligible Students
                           </h4>
-                          <span className="transition group-open:rotate-180 text-black">
+                          <span className="transition group-open:rotate-180 text-black dark:text-white">
                             <svg
                               fill="none"
                               height={24}
@@ -418,7 +416,7 @@ const CheckCompany = () => {
                           </span>
                         </summary>
                         {companyData.eligibleStudents.length > 0 ? (
-                          <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mt-4 ">
+                          <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mt-4">
                             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 bg-primary text-white">
                               <tr>
                                 <th scope="col" className="ps-3 py-3">
@@ -439,7 +437,7 @@ const CheckCompany = () => {
                               {companyData.eligibleStudents.map(
                                 (student, idx) => (
                                   <tr
-                                    className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                                    className="bg-white dark:border-strokedark dark:bg-boxdark border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 dark:text-white"
                                     key={idx}
                                   >
                                     <td className="ps-3 py-4"> {idx + 1}</td>
@@ -492,10 +490,10 @@ const CheckCompany = () => {
                       <div className="py-5 overflow-x-auto">
                         <details className="group">
                           <summary className="flex justify-between items-center font-medium cursor-pointer list-none">
-                            <h4 className="text-xl text-primary font-bold">
+                            <h4 className="text-xl text-primary dark:text-white font-bold">
                               List Of Applied Students
                             </h4>
-                            <span className="transition group-open:rotate-180 text-black">
+                            <span className="transition group-open:rotate-180 text-black dark:text-white">
                               <svg
                                 fill="none"
                                 height={24}
@@ -532,7 +530,7 @@ const CheckCompany = () => {
                             <tbody>
                               {companyData.applyStudents.map((student, idx) => (
                                 <tr
-                                  className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                                  className="bg-white dark:border-strokedark dark:bg-boxdark border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 ark:text-white"
                                   key={idx}
                                 >
                                   <td className="ps-3 py-4"> {idx + 1}</td>
@@ -582,10 +580,10 @@ const CheckCompany = () => {
                       <div className="py-5 overflow-x-auto">
                         <details className="group">
                           <summary className="flex justify-between items-center font-medium cursor-pointer list-none">
-                            <h4 className="text-xl text-primary font-bold">
+                            <h4 className="text-xl text-primary dark:text-white font-bold">
                               List Of Selected Students
                             </h4>
-                            <span className="transition group-open:rotate-180 text-black">
+                            <span className="transition group-open:rotate-180 text-black dark:text-white">
                               <svg
                                 fill="none"
                                 height={24}
@@ -622,7 +620,7 @@ const CheckCompany = () => {
                               {companyData.selectedStudents.map(
                                 (student, idx) => (
                                   <tr
-                                    className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                                    className="bg-white dark:border-strokedark dark:bg-boxdark border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 ark:text-white"
                                     key={idx}
                                   >
                                     <td className="ps-3 py-4"> {idx + 1}</td>
@@ -650,12 +648,12 @@ const CheckCompany = () => {
                                         {' '}
                                         {student.department}
                                       </div>
-                                    </td> 
+                                    </td>
                                     <td className="px-6 py-4">
                                       <div className="max-w-sm mx-auto">
-                                          <h1 className="text-green-500 font-bold">
-                                            Selected
-                                          </h1>
+                                        <h1 className="text-green-500 font-bold">
+                                          Selected
+                                        </h1>
                                       </div>
                                     </td>
                                   </tr>
@@ -678,7 +676,7 @@ const CheckCompany = () => {
             <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
               <div className="relative w-auto my-6 mx-auto max-w-xl">
                 {/*content*/}
-                <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white dark:border-strokedark dark:bg-boxdark outline-none focus:outline-none">
                   {/*header*/}
                   <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
                     <h3 className="text-lg md:text-3xl font-semibold text-primary">
@@ -713,7 +711,7 @@ const CheckCompany = () => {
                           })}
                           type="text"
                           id="resume"
-                          className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ${errors.resume && 'border-red-500'}`}
+                          className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 ${errors.resume && 'border-red-500'}`}
                         />
                         {errors.resume && (
                           <p className="text-red-500 text-xs mt-1">

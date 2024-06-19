@@ -15,6 +15,9 @@ module.exports = {
       ...defaultTheme.screens,
     },
     extend: {
+      textShadow: {
+        white: '0 0 3px #FFF, 0 0 5px #FFF',
+      },
       colors: {
         current: 'currentColor',
         transparent: 'transparent',
@@ -250,5 +253,18 @@ module.exports = {
       },
     },
   },
-  plugins: [],
-}
+  plugins: [
+    function ({ addUtilities }) {
+      const newUtilities = {
+        '.text-shadow-primary': {
+          textShadow: '0 0 23px #3C50E0, 0 0 13px #3C50E0',
+        },
+        '.text-shadow-white': {
+          textShadow: '0 0 3px #FFF, 0 0 3px #FFF',
+        },
+      };
+
+      addUtilities(newUtilities, ['responsive', 'hover']);
+    },
+  ],
+};

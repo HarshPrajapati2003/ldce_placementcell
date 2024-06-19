@@ -127,7 +127,7 @@ const InfoForm = () => {
       )}
       {!formData && (
         <DefaultLayout>
-          <Breadcrumb pageName="Registration Form" />
+          <Breadcrumb pageName="Application Form" />
 
           <div className="flex flex-col gap-9">
             {/* <!-- Registration Form --> */}

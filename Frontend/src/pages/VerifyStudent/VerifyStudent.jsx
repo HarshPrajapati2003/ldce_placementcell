@@ -63,10 +63,10 @@ const VerifyStudent = () => {
      console.log(students);
 
   try {
-    const res = await axios.patch(
-      '/student/check-profile',
-      { id, isVerified: selectedStatus.toLowerCase() },
-    );
+    const res = await axios.patch('/student/check-profile', {
+      id,
+      isVerified: selectedStatus.toLowerCase(),
+    });
     if (res) {
       // Update the state with the response data
       setStudents(res.data.students);
@@ -88,7 +88,9 @@ const VerifyStudent = () => {
     setEnrollment("")
     console.log(search)
     try {
-      const res = await axios.post("/student/fetch-pending-regex", { findStr: search })
+      const res = await axios.post('/student/fetch-pending-regex', {
+        findStr: search,
+      });
       if (res) {
         setStudents(res.data.pendingStudents);
         console.log(res.data.pendingStudents);
@@ -108,10 +110,9 @@ const VerifyStudent = () => {
   const handleEnrollment = async () => {
     setLoading(true);
     try {
-      const res = await axios.post(
-        '/student/fetch-pending-enrollment',
-        { enrollmentNumber:enrollment },
-      );
+      const res = await axios.post('/student/fetch-pending-enrollment', {
+        enrollmentNumber: enrollment,
+      });
       if (res) {
         setStudents(res.data.pendingStudents);
         console.log(res.data.pendingStudents);
@@ -129,7 +130,7 @@ const VerifyStudent = () => {
       <Toaster position="top-center" reverseOrder={false} />
       {/* <!-- ====== Verify Student Start ====== --> */}
       {students && (
-        <div className="relative overflow-x-auto shadow-md sm:rounded-lg bg-white">
+        <div className="relative overflow-x-auto shadow-md sm:rounded-lg bg-white dark:border-strokedark dark:bg-boxdark">
           <div className="grid grid-cols-1 sm:grid-cols-2">
             <div className="max-w-md mx-auto my-2 sm:my-5 px-1 w-full">
               <label
@@ -160,7 +161,7 @@ const VerifyStudent = () => {
                   type="text"
                   value={search}
                   id="default-search"
-                  className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
+                  className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black "
                   placeholder="Search name, email, pan number etc..."
                   onChange={(e) => handleSearch(e)}
                 />
@@ -195,7 +196,7 @@ const VerifyStudent = () => {
                   type="number"
                   id="default-search"
                   value={enrollment}
-                  className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
+                  className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black "
                   placeholder="Search Enrollment No."
                   onChange={(e) => handleEnrollmentSearch(e)}
                 />
@@ -228,7 +229,7 @@ const VerifyStudent = () => {
             </thead>
             <tbody>
               {students.map((student) => (
-                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 dark:border-strokedark dark:bg-boxdark">
                   <th
                     scope="row"
                     className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
@@ -252,7 +253,7 @@ const VerifyStudent = () => {
                     <div className="max-w-sm mx-auto">
                       <select
                         id="small"
-                        className="block w-30 p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        className="block w-30 p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         onChange={(e) =>
                           handleStatusChange(e.target.value, student._id)
                         }
