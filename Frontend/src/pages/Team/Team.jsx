@@ -17,7 +17,7 @@ const Team = () => {
                 <div className="flex flex-wrap justify-center text-center mb-24">
                   <div className="w-full lg:w-10/12 px-4">
                     {/* Header */}
-                    <h1 className="text-primary text-4xl font-bold mb-8 dark:text-shadow-white">
+                    <h1 className="text-primary text-4xl font-bold mb-8 dark:text-[#FDE4D0]">
                       Meet Our Team
                     </h1>
                     {/* Description */}

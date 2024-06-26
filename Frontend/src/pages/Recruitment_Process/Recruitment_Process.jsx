@@ -9,7 +9,7 @@ const Recruitment_Process = () => {
       <div className="w-full max-w-full rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
         <section className="p-6 dark:bg-gray-100 dark:text-gray-800">
           <div className="container mx-auto">
-            <h2 className="text-3xl font-bold text-center dark:text-gray-900 text-primary">
+            <h2 className="text-3xl font-bold text-center dark:text-gray-900 text-primary dark:text-[#FDE4D0]">
               Steps Of Recruitment Process
             </h2>
             <div className="grid gap-6 mb-16 mt-8 md:grid-cols-2 lg:grid-cols-3">

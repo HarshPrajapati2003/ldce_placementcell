@@ -65,7 +65,7 @@ const Overview = () => {
               </div>
 
               <div className="lg:py-24 text-center lg:text-start">
-                <h2 className="text-3xl font-bold sm:text-4xl text-primary dark:text-white dark:text-shadow-primary">
+                <h2 className="text-3xl font-bold sm:text-4xl text-primary dark:text-[#FDE4D0] dark:text-shadow-primary">
                   Welcome to Training and Placement Cell of LDCE
                 </h2>
 
@@ -302,7 +302,7 @@ const Overview = () => {
                       stroke-width="2"
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      class="lucide lucide-circle-check-big me-3 text-primary w-4"
+                      class="lucide lucide-circle-check-big me-3 text-primary dark:text-[#FDE4D0] w-4"
                     >
                       <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
                       <path d="m9 11 3 3L22 4" />
@@ -336,7 +336,7 @@ const Overview = () => {
                       stroke-width="2"
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      class="lucide lucide-circle-check-big me-3 text-primary w-4"
+                      class="lucide lucide-circle-check-big me-3 text-primary dark:text-[#FDE4D0] w-4"
                     >
                       <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
                       <path d="m9 11 3 3L22 4" />
@@ -370,7 +370,7 @@ const Overview = () => {
                       stroke-width="2"
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      class="lucide lucide-circle-check-big me-3 text-primary w-4"
+                      class="lucide lucide-circle-check-big me-3 text-primary dark:text-[#FDE4D0] w-4"
                     >
                       <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
                       <path d="m9 11 3 3L22 4" />
@@ -404,7 +404,7 @@ const Overview = () => {
                       stroke-width="2"
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      class="lucide lucide-circle-check-big me-3 text-primary w-4"
+                      class="lucide lucide-circle-check-big me-3 text-primary dark:text-[#FDE4D0] w-4"
                     >
                       <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
                       <path d="m9 11 3 3L22 4" />

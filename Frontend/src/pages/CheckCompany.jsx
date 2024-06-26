@@ -197,7 +197,7 @@ const CheckCompany = () => {
                   <p className="text-gray-700 text-center p-3 mx-1 sm:mx-4">
                     {companyData.description}
                   </p>
-                  <p className="text-sm text-gray-500 text-center p-1 font-bold text-primary">
+                  <p className="text-sm text-gray-500 text-center p-1 font-bold text-primary dark:text-[#FDE4D0]">
                     {companyData.location}
                   </p>
                 </div>
@@ -262,7 +262,7 @@ const CheckCompany = () => {
               <div className="my-4 flex flex-col 2xl:flex-row space-y-4 2xl:space-y-0 2xl:space-x-4">
                 <div className="w-full flex flex-col">
                   <div className="flex-1 bg-white dark:border-strokedark dark:bg-boxdark rounded-lg shadow-xl p-3 sm:p-8 mt-4">
-                    <h4 className="text-xl text-primary font-bold">
+                    <h4 className="text-xl text-primary dark:text-[#FDE4D0] font-bold">
                       Company Information
                     </h4>
                     <ul className="mt-2 text-gray-700 dark:text-bodydark1 text-sm md:text-base">
@@ -327,7 +327,7 @@ const CheckCompany = () => {
               <div className="my-4 flex flex-col 2xl:flex-row space-y-4 2xl:space-y-0 2xl:space-x-4">
                 <div className="w-full flex flex-col">
                   <div className="flex-1 bg-white dark:border-strokedark dark:bg-boxdark rounded-lg shadow-xl p-3 sm:p-8 mt-4">
-                    <h4 className="text-xl text-primary font-bold">
+                    <h4 className="text-xl text-primary dark:text-[#FDE4D0] font-bold">
                       Eligibility Criteria
                     </h4>
                     <ul className="mt-2 text-gray-700 dark:text-bodydark1 text-sm md:text-base">
@@ -381,7 +381,7 @@ const CheckCompany = () => {
 
               <div className="flex flex-col w-full mt-4">
                 <div className="flex-1 bg-white dark:border-strokedark dark:bg-boxdark rounded-lg shadow-xl p-3 sm:p-8">
-                  <h4 className="text-xl text-primary font-bold">
+                  <h4 className="text-xl text-primary dark:text-[#FDE4D0] font-bold">
                     Address Information
                   </h4>
                   <p className="mt-2 text-gray-700 dark:text-bodydark1 text-sm sm:text-md">
@@ -679,7 +679,7 @@ const CheckCompany = () => {
                 <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white dark:border-strokedark dark:bg-boxdark outline-none focus:outline-none">
                   {/*header*/}
                   <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
-                    <h3 className="text-lg md:text-3xl font-semibold text-primary">
+                    <h3 className="text-lg md:text-3xl font-semibold text-primary dark:text-[#FDE4D0]">
                       Upload Your Resume
                     </h3>
                     <button

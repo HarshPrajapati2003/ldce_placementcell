@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import Breadcrumb from '../../components/Breadcrumbs/Breadcrumb';
-import LogoDark from '../../images/logo/logo-dark.svg';
-import Logo from '../../images/logo/logo.svg';
+import LogoNew from '../../images/logo/logo-transparent-svg.svg';
+import DarkLogoNew from '../../images/logo/darklogo-transparent-svg.svg';
 import DefaultLayout from '../../layout/DefaultLayout';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
@@ -43,14 +43,9 @@ const SignUp = () => {
         <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
           <div className="flex flex-wrap items-center">
             <div className="hidden w-full xl:block xl:w-1/2">
-              <div className="py-17.5 px-26 text-center">
-                <Link className="mb-5.5 inline-block" to="/">
-                  <img className="hidden dark:block" src={Logo} alt="Logo" />
-                  <img className="dark:hidden" src={LogoDark} alt="Logo" />
-                </Link>
-                <p className="2xl:px-20">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                  suspendisse.
+              <div className="pb-17.5 px-26 text-center">
+                <p className="2xl:px-20 font-medium">
+                  Wellcome to LDCE Placement Cell Portal
                 </p>
 
                 <span className="mt-15 inline-block">
@@ -180,10 +175,10 @@ const SignUp = () => {
 
             <div className="w-full border-stroke dark:border-strokedark xl:w-1/2 xl:border-l-2">
               <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-                <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+                <div className="sm:mx-auto sm:w-full sm:max-w-xs">
                   <Link className="flex justify-center" to="/">
-                    <img className="hidden dark:block" src={Logo} alt="Logo" />
-                    <img className="dark:hidden" src={LogoDark} alt="Logo" />
+                    <img className="hidden dark:block" src={DarkLogoNew} alt="Logo" />
+                    <img className="dark:hidden" src={LogoNew} alt="Logo" />
                   </Link>
                   <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
                     Create your account

@@ -115,7 +115,7 @@ const StudentProfile = () => {
                 <p className="text-gray-700 text-center p-1">
                   {studentData.department}, {studentData.passingYear}
                 </p>
-                <p className="text-sm text-gray-500 text-center p-1 font-bold text-primary">
+                <p className="text-sm text-gray-500 text-center p-1 font-bold text-primary dark:text-[#FDE4D0]">
                   Registration ID : {studentData._id}
                 </p>
               </div>
@@ -192,7 +192,7 @@ const StudentProfile = () => {
             </div>
             {studentData.isVerified && (
               <div className="flex-1 bg-white dark:border-strokedark dark:bg-boxdark rounded-lg shadow-xl mt-4 p-8 break-all sm:break-normal">
-                <h4 className="text-xl text-primary font-bold">
+                <h4 className="text-xl text-primary dark:text-[#FDE4D0] font-bold">
                   Verification Status
                 </h4>
                 <div className="relative pt-4">
@@ -301,7 +301,7 @@ const StudentProfile = () => {
             <div className="my-4 flex flex-col 2xl:flex-row space-y-4 2xl:space-y-0 2xl:space-x-4">
               <div className="w-full flex flex-col">
                 <div className="flex-1 bg-white dark:border-strokedark dark:bg-boxdark rounded-lg shadow-xl p-3 sm:p-8">
-                  <h4 className="text-xl text-primary font-bold">
+                  <h4 className="text-xl text-primary dark:text-[#FDE4D0] font-bold">
                     Personal Information
                   </h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 md:gap-2 text-sm md:text-base">
@@ -401,7 +401,7 @@ const StudentProfile = () => {
 
                 <div className="flex flex-col w-full mt-4">
                   <div className="flex-1 bg-white dark:border-strokedark dark:bg-boxdark rounded-lg shadow-xl p-3 sm:p-8">
-                    <h4 className="text-xl text-primary font-bold">
+                    <h4 className="text-xl text-primary dark:text-[#FDE4D0] font-bold">
                       Residential Information
                     </h4>
                     <p className="mt-2 text-gray-700 dark:text-bodydark1 text-sm sm:text-md">
@@ -438,7 +438,7 @@ const StudentProfile = () => {
                 </div>
 
                 <div className="flex-1 bg-white dark:border-strokedark dark:bg-boxdark rounded-lg shadow-xl p-3 sm:p-8 mt-4">
-                  <h4 className="text-xl text-primary font-bold">
+                  <h4 className="text-xl text-primary dark:text-[#FDE4D0] font-bold">
                     Parents Information
                   </h4>
                   <ul className="mt-2 text-gray-700 dark:text-bodydark1 text-sm md:text-base">
@@ -471,7 +471,7 @@ const StudentProfile = () => {
                 </div>
 
                 <div className="flex-1 bg-white dark:border-strokedark dark:bg-boxdark rounded-lg shadow-xl p-3 sm:p-8 mt-4">
-                  <h4 className="text-xl text-primary font-bold">
+                  <h4 className="text-xl text-primary dark:text-[#FDE4D0] font-bold">
                     Academic Information
                   </h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 md:gap-2 text-sm md:text-base">

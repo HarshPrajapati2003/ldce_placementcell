@@ -133,7 +133,7 @@ const InfoForm = () => {
             {/* <!-- Registration Form --> */}
             <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
               <div className="border-b border-stroke py-4 px-6.5 dark:border-strokedark">
-                <h3 className="font-medium text-primary dark:text-white">
+                <h3 className="font-medium text-primary dark:text-[#FDE4D0]">
                   Personal Information
                 </h3>
               </div>
@@ -441,7 +441,7 @@ const InfoForm = () => {
                   {/* Parents Information */}
                   <div className="border-b border-stroke py-4 px-6.5 dark:border-strokedark"></div>
                   <div className="border-b border-stroke py-4 px-6.5 dark:border-strokedark mb-3">
-                    <h3 className="font-medium text-primary dark:text-white">
+                    <h3 className="font-medium text-primary dark:text-[#FDE4D0]">
                       Parents Information
                     </h3>
                   </div>
@@ -521,7 +521,7 @@ const InfoForm = () => {
                   </div>
                   <div className="border-b border-stroke py-4 px-6.5 dark:border-strokedark "></div>
                   <div className="border-b border-stroke py-4 px-6.5 dark:border-strokedark mb-3">
-                    <h3 className="font-medium text-primary dark:text-white text">
+                    <h3 className="font-medium text-primary dark:text-[#FDE4D0]">
                       Residential Information
                     </h3>
                   </div>
@@ -612,7 +612,7 @@ const InfoForm = () => {
                   </div>
                   <div className="border-b border-stroke py-4 px-6.5 dark:border-strokedark "></div>
                   <div className="border-b border-stroke py-4 px-6.5 dark:border-strokedark mb-3">
-                    <h3 className="font-medium text-primary dark:text-white text">
+                    <h3 className="font-medium text-primary dark:text-[#FDE4D0]">
                       Academic Information
                     </h3>
                   </div>

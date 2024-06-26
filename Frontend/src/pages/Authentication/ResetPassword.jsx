@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import Breadcrumb from '../../components/Breadcrumbs/Breadcrumb';
-import LogoDark from '../../images/logo/logo-dark.svg';
-import Logo from '../../images/logo/logo.svg';
+import LogoNew from '../../images/logo/logo-transparent-svg.svg';
+import DarkLogoNew from '../../images/logo/darklogo-transparent-svg.svg';
 import DefaultLayout from '../../layout/DefaultLayout';
 import {
   resetPasswordAsync,
@@ -45,10 +45,10 @@ const ResetPassword = () => {
       <DefaultLayout>
         <Breadcrumb pageName="Reset Password" />
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-          <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+          <div className="sm:mx-auto sm:w-full sm:max-w-xs">
             <Link className="flex justify-center" to="/">
-              <img className="hidden dark:block" src={Logo} alt="Logo" />
-              <img className="dark:hidden" src={LogoDark} alt="Logo" />
+              <img className="hidden dark:block" src={DarkLogoNew} alt="Logo" />
+              <img className="dark:hidden" src={LogoNew} alt="Logo" />
             </Link>
             <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
               Enter New Password

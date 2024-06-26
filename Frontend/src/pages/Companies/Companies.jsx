@@ -78,7 +78,7 @@ const Companies = () => {
           <div className="w-full max-w-full rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
             <section className="p-6 dark:bg-gray-100 dark:text-gray-800">
               <div className="container mx-auto">
-                <h2 className="text-3xl font-bold text-center dark:text-gray-900 text-primary">
+                <h2 className="text-3xl font-bold text-center dark:text-gray-900 text-primary dark:text-[#FDE4D0]">
                   Details Of All Companies
                 </h2>
                 <div className="max-w-md mx-auto my-1 -mb-3 sm:my-3 px-1 w-full pt-6">

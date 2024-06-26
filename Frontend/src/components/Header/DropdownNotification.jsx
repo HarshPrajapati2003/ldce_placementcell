@@ -94,7 +94,7 @@ const DropdownNotification = () => {
                 notifications.length === 0 ? 'hidden' : 'inline-flex'
               }`}
             >
-              { notifications.length<10 ? notifications.length : "9+" }
+              {notifications.length < 10 ? notifications.length : '9+'}
               <span className="absolute -z-1 inline-flex h-full w-full animate-ping rounded-full bg-meta-1 opacity-75"></span>
             </span>
 
@@ -122,7 +122,9 @@ const DropdownNotification = () => {
             }`}
           >
             <div className="px-4.5 py-3">
-              <h5 className="text-sm font-medium text-black dark:text-white">Notification</h5>
+              <h5 className="text-sm font-medium text-black dark:text-white">
+                Notification
+              </h5>
             </div>
 
             <ul className="flex h-auto flex-col overflow-y-auto">
@@ -135,7 +137,9 @@ const DropdownNotification = () => {
                     <p className="text-sm text-black dark:text-white pe-8">
                       {e.title}
                     </p>
-                    <p className="text-xs text-primary dark:font-bold">{formatDate(e.date)}</p>
+                    <p className="text-xs text-primary dark:text-[#FDE4D0] font-bold">
+                      {formatDate(e.date)}
+                    </p>
                   </Link>
                   <button
                     className="absolute top-3 right-11 md:right-3 text-red-600"

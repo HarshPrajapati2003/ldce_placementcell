@@ -143,7 +143,7 @@ class authController {
 
           const newToken = token.replace(/\./g, "DOT");
 
-          const link = `https://ldce-placementcell.onrender.com//reset/${isUser._id}/${newToken}`;
+          const link = `https://ldce-placementcell.onrender.com/reset/${isUser._id}/${newToken}`;
 
           // sending email
           const subject = "Reset Password Request";
