@@ -2,6 +2,10 @@
 
 Welcome to the Campus Placement Management System! This project aims to streamline and automate the campus placement process at L. D. College Of Engineering, making it efficient, less time-consuming, and reducing manual work.
 
+# 🌐 Demo
+
+Check out the live demo of the project [click here](https://ldce-placementcell.onrender.com/).
+
 ## 🛠️ Tech Stack
 - **Frontend:** React.js
 - **Backend:** Node.js, Express.js
